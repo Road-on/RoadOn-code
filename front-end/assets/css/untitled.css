@@ -1,0 +1,15 @@
+.intro-text {
+}
+
+.masthead {
+  background: url("../../assets/img/header-bg-2.jpg");
+}
+
+.intro-lead-in {
+  text-shadow: 5px 10px 20px rgb(0,0,0);
+}
+
+.btn-xl {
+  background: rgb(254, 209, 54);
+}
+
