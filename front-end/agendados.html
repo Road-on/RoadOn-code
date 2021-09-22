@@ -37,7 +37,7 @@
 			style="background: rgb(47, 54, 58)"
 		>
 			<div class="container">
-				<a class="navbar-brand" href="#page-top">Road.On</a
+				<a class="navbar-brand" href="index-logado.html">Road.On</a
 				><button
 					data-bs-toggle="collapse"
 					data-bs-target="#navbarResponsive"
@@ -58,14 +58,14 @@
 						<li class="nav-item"></li>
 						<li class="nav-item"></li>
 						<li class="nav-item">
-							<a class="nav-link active" href="#">Agendados</a>
+							<a class="nav-link active" href="#page-top">Agendados</a>
 						</li>
-						<li class="nav-item"><a class="nav-link" href="#">Destinos</a></li>
+						<li class="nav-item"><a class="nav-link" href="destinos.html">Destinos</a></li>
 						<li class="nav-item">
-							<a class="nav-link" href="#about">Dashboard</a>
+							<a class="nav-link" href="dashboard.html">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="#contact" style="margin-right: 28px"
+							<a class="nav-link" href="registrar-turista.html" style="margin-right: 28px"
 								>incluir turistas</a
 							>
 						</li>
@@ -166,7 +166,7 @@
 												height: 43px;
 											"
 											data-bs-toggle="modal"
-											data-bs-target="#modal-1"
+											data-bs-target="#modal-turistas"
 										>
 											<i
 												class="far fa-user"
@@ -184,6 +184,8 @@
 												box-shadow: 2px 2px 20px -1px #757575;
 												margin: 10px;
 											"
+											onclick="window.location.href = 'consultar-info-agendamento.html'"
+											
 										>
 											<i
 												class="fas fa-info-circle"
@@ -245,7 +247,7 @@
 											margin-bottom: 10px;
 										"
 										data-bs-toggle="modal"
-										data-bs-target="#modal-2"
+										data-bs-target="#modal-cancelamento"
 										>Cancelar</a
 									><a
 										class="
@@ -322,7 +324,7 @@
 												height: 44px;
 											"
 											data-bs-toggle="modal"
-											data-bs-target="#modal-1"
+											data-bs-target="#modal-turistas"
 										>
 											<i
 												class="far fa-user"
@@ -340,6 +342,7 @@
 												margin: 10px;
 												height: 44px;
 											"
+											onclick="window.location.href = 'consultar-info-agendamento.html'"
 										>
 											<i
 												class="fas fa-info-circle"
@@ -399,7 +402,7 @@
 											margin-bottom: 10px;
 										"
 										data-bs-toggle="modal"
-										data-bs-target="#modal-2"
+										data-bs-target="#modal-cancelamento"
 										>Cancelar</a
 									><a
 										class="
@@ -475,7 +478,7 @@
 												height: 44px;
 											"
 											data-bs-toggle="modal"
-											data-bs-target="#modal-1"
+											data-bs-target="#modal-turistas"
 										>
 											<i
 												class="far fa-user"
@@ -493,6 +496,7 @@
 												margin: 10px;
 												height: 44px;
 											"
+											onclick="window.location.href = 'consultar-info-agendamento.html'"
 										>
 											<i
 												class="fas fa-info-circle"
@@ -552,7 +556,7 @@
 											margin-bottom: 10px;
 										"
 										data-bs-toggle="modal"
-										data-bs-target="#modal-2"
+										data-bs-target="#modal-cancelamento"
 										>Cancelar</a
 									><a
 										class="
@@ -606,7 +610,7 @@
 				</li>
 			</ul>
 		</footer>
-		<div class="modal fade" role="dialog" tabindex="-1" id="modal-1">
+		<div class="modal fade" role="dialog" tabindex="-1" id="modal-turistas">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div
@@ -683,6 +687,7 @@
 									class="btn btn-primary"
 									type="button"
 									style="color: rgb(0, 0, 0)"
+									onclick="window.location.href = 'editar-turista.html'"
 								>
 									Editar
 								</button>
@@ -748,6 +753,7 @@
 									class="btn btn-primary"
 									type="button"
 									style="color: rgb(0, 0, 0)"
+									onclick="window.location.href = 'editar-turista.html'"
 								>
 									Editar
 								</button>
@@ -813,6 +819,7 @@
 									class="btn btn-primary"
 									type="button"
 									style="color: rgb(0, 0, 0)"
+									onclick="window.location.href = 'editar-turista.html'"
 								>
 									Editar
 								</button>
@@ -832,7 +839,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" role="dialog" tabindex="-1" id="modal-2">
+		<div class="modal fade" role="dialog" tabindex="-1" id="modal-cancelamento">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div
