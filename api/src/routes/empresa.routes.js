@@ -12,6 +12,7 @@
 
  // ==> Rota responsável por criar uma nova Empresa: (POST): localhost:3000/api/empresas
  router.post('/empresas', empresaController.createEmpresa);
+ 
  // ==> Rota responsável por listar todas as Empresas: (GET): localhost:3000/api/empresas
 router.get('/empresas', empresaController.listAllEmpresas);
 
