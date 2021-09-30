@@ -5,7 +5,6 @@
      * Author: Fabio Santos
  */
  const app = require('./src/app');
- const port = process.env.PORT || 3000;
- app.listen(port, () => {
-   console.log('Aplicação executando na porta:', port);
- });
+ app.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
