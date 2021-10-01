@@ -51,5 +51,5 @@ exports.deleteEmpresaById = async (req, res) => {
   await db.query('DELETE FROM empresa WHERE id_empresa = $1', [
     id_empresa
   ]);
-  res.status(200).send({ message: 'Empresa deletada com sucesso!', id_empresa });
+  res.status(200).send({ message: 'Empresa deletada com sucesso!', id: id_empresa });
 };
