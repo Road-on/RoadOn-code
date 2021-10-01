@@ -12,7 +12,7 @@ exports.createEmpresa = async (req, res) => {
   res.status(201).send({
     message: "Empresa adicionada com sucesso!",
     body: {
-      product: { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa }
+      empresa: { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa }
     },
   });
 };
@@ -44,7 +44,7 @@ exports.updateEmpresaById = async (req, res) => {
   res.status(200).send({ message: "Empresa atualizada com sucesso!" });
 };
 
-// ==> Método responsável por excluir um 'Product' pelo 'Id':
+// ==> Método responsável por excluir uma 'Empresa' pelo 'Id':
 
 exports.deleteEmpresaById = async (req, res) => {
   const id_empresa = parseInt(req.params.id);
