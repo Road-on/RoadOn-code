@@ -8,7 +8,7 @@
  const router = require('express-promise-router')();
 
  const agendaExcursaoController = require('../controllers/agendaExcursao.controller');
- // ==> Definindo as rotas do CRUD - 'Excursões':
+ // ==> Definindo as rotas do CRUD - 'Agendamentos':
 
  // ==> Rota responsável por criar uma nova Agendamento: (POST): localhost:3000/api/agendamentos
  router.post('/agendamentos', agendaExcursaoController.createExcursao);
