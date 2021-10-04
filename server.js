@@ -16,5 +16,5 @@ app.get('/', (req, res) => {
 app.get('/login', (req, res) => {
   res.render('login.ejs', {titulo: 'João'});
 })
-
+app.use(express.static(__dirname + '/front-end'));
 app.listen(3000);
