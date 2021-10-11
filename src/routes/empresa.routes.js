@@ -11,18 +11,18 @@
  // ==> Definindo as rotas do CRUD - 'Empresa':
 
  // ==> Rota responsável por criar uma nova Empresa: (POST): localhost:3000/api/empresas
- router.post('/empresas', empresaController.createEmpresa);
+ router.post('/registrar-empresa', empresaController.createEmpresa);
  
  // ==> Rota responsável por listar todas as Empresas: (GET): localhost:3000/api/empresas
-router.get('/empresas', empresaController.listAllEmpresas);
+router.get('/registrar-empresa', empresaController.listAllEmpresas);
 
 // ==> Rota responsável por selecionar Empresa pelo 'Id': (GET): localhost:3000/api/empresas/:id
-router.get('/empresas/:id', empresaController.findEmpresaById);
+router.get('/registrar-empresa:id', empresaController.findEmpresaById);
 
 // ==> Rota responsável por atualizar Empresa pelo 'Id': (PUT): localhost: 3000/api/empresas/:id
-router.put('/empresas/:id', empresaController.updateEmpresaById);
+router.put('/registrar-empresa:id', empresaController.updateEmpresaById);
 
 // ==> Rota responsável por excluir Empresa pelo 'Id': (DELETE): localhost:3000/api/empresas/:id
-router.delete('/empresas/:id', empresaController.deleteEmpresaById);
+router.delete('/registrar-empresa:id', empresaController.deleteEmpresaById);
 
 module.exports = router;
