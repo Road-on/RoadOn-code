@@ -19,13 +19,19 @@
                     <div class="mb-3">
                         <h5 style="color: rgb(254,209,54);text-align: center;margin-bottom: 30px;">Dados para login</h5>
                     </div>
-                    <div class="mb-3"><input class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite seu E-mail de acesso"></div>
-                    <div class="mb-3"><input class="form-control" type="password" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a sua senha"></div><a href="registrar-empresa">Ainda não possui cadastro? Clique aqui!</a>
+                    <div class="mb-3"><input name="email" class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite seu E-mail de acesso"></div>
+                    <div class="mb-3"><input name="password" class="form-control" type="password" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a sua senha"></div>
+                    <a href="registrar-empresa">Ainda não possui cadastro? Clique aqui!</a>
+                    <% if(message) { %>
+                        <p>
+                          <label style="color:Red"><%= message %></label>
+                        </p>
+                      <%}%>    
                     <div class="mb-3"></div>
                     <div class="mb-3"></div>
                     <div class="mb-3"></div>
-                    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Logar!</button></div>
-                </form>
+                    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" value="login" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Logar!</button></div>
+                </form>                
             </div>
         </section>
     </div>

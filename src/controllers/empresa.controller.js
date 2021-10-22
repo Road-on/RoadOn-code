@@ -1,18 +1,19 @@
 const db = require("../config/database");
-
+const bcrypt = require('bcryptjs');
 // ==> Método responsável por criar uma nova Empresa':
 
-exports.createEmpresa = async (req, res) => {
+exports.createEmpresa = async (req, res) => {   
   const { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa  } = req.body;
+  const senhaHash = bcrypt.hashSync(senha_empresa, 10);
   const { rows } = await db.query(
     "INSERT INTO empresa (nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa) VALUES ($1, $2, $3, $4, $5)",
-    [nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa]
+    [nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senhaHash]
   );
 
   res.status(201).send({
     message: "Empresa adicionada com sucesso!",
     body: {
-      empresa: { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa }
+      empresa: { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senhaHash }
     },
   });
 };
@@ -37,9 +38,10 @@ exports.findEmpresaById = async (req, res) => {
 exports.updateEmpresaById = async (req, res) => {
   const id_empresa = parseInt(req.params.id);
   const { nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa} = req.body;
+  const senhaHash = bcrypt.hashSync(senha_empresa, 10);
   const response = await db.query(
     "UPDATE empresa SET nome_empresa = $1, cnpj_empresa = $2, telefone_empresa = $3, email_empresa = $4, senha_empresa = $5 WHERE id_empresa = $6",
-    [nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senha_empresa, id_empresa]
+    [nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senhaHash, id_empresa]
   );
   res.status(200).send({ message: "Empresa atualizada com sucesso!" });
 };
