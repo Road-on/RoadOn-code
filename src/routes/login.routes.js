@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router();
+const router = require('express-promise-router')()
 const passport = require('passport');
 
 /* GET login page. */
 router.get('/', (req, res, next) => {
     if (req.query.fail)
-        res.render('login.ejs', { message: 'Email e/ou senha incorretos!' });
+        res.render('login.ejs', { message: 'Login Inválido! Email e/ou senha incorretos!' });
     else
         res.render('login.ejs', { message: null });
 });
