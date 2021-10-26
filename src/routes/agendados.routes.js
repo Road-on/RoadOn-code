@@ -11,7 +11,7 @@
 
  // ==> Renderização de rota:
 router.get('/', (req, res) => {
-	res.render('agendados.ejs')
+	res.render('/agendados.ejs')
 })
 // ==> Rota responsável por listar todas os Agendamento: (GET): localhost:3000/api/agendar
 router.get('/agendados', agendarController.listAllExcursoes)

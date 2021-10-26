@@ -50,13 +50,13 @@ app.use(cors());
 // app.use('/login', loginRouter);
 // app.use('/users', authenticationMiddleware, usersRouter);
 // app.use('/', authenticationMiddleware,  indexRouter);
- 
+app.set('views','src/views')
 app.set('view-engine', 'ejs');
 app.get('/', (req, res) => {
   res.render('index.ejs')
 })
 
-app.use(express.static('./front-end'));
+app.use(express.static('src'));
 
 // => Requisição API (Testes Postman)
 app.use(index);
