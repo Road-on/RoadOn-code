@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS Empresa(
     cnpj_empresa VARCHAR(50) NOT NULL, 
     telefone_empresa VARCHAR(20) NOT NULL,
     email_empresa VARCHAR(240) NOT NULL,
-    senha_empresa VARCHAR(50) NOT NULL
+    senha_empresa VARCHAR(250) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Destino(

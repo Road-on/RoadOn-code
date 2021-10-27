@@ -15,10 +15,16 @@
     "nodemon": "^2.0.13"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-pg-simple": "^7.0.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
+<<<<<<< HEAD
+=======
+    "express-session": "^1.17.2",
+>>>>>>> 7330a3cfe088bc06b1f0c8a1c5a4a287f3ad0e47
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
     "pg": "^8.7.1"

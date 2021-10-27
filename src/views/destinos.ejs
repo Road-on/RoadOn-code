@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>Home - Brand</title>
+		<%- include('head') %>
+	</head>
+
+	<body
+		id="page-top"
+		data-bs-spy="scroll"
+		data-bs-target="#mainNav"
+		data-bs-offset="54"
+		style="background: rgb(47, 54, 58)"
+	>
+		<nav
+			class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark"
+			id="mainNav"
+			style="background: rgb(47, 54, 58)"
+		>
+			<div class="container">
+				<a class="navbar-brand" href="index-logado.html">Road.On</a>
+				<button
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarResponsive"
+					class="navbar-toggler navbar-toggler-right"
+					type="button"
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<i class="fa fa-bars"></i>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarResponsive"
+					style="padding-right: 12px"
+				>
+					<ul class="navbar-nav ms-auto text-uppercase">
+						<li class="nav-item"></li>
+						<li class="nav-item"></li>
+						<li class="nav-item">
+							<a class="nav-link" href="agendados.html">Agendados</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="#page-top">Destinos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="dashboard.html">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								href="registrar-turista.html"
+								style="margin-right: 28px"
+							>
+								incluir turistas
+							</a>
+						</li>
+						<li class="nav-item"></li>
+					</ul>
+					<button
+						class="btn btn-primary text-uppercase"
+						type="button"
+						style="color: rgb(0, 0, 0); width: 97.4844px; height: 45px"
+					>
+						Sair
+					</button>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<section
+				class="register-photo"
+				style="
+					background: rgb(47, 54, 58);
+					margin-bottom: 5px;
+					margin-top: 30px;
+					padding-bottom: 50px;
+				"
+			>
+				<h1
+					class="text-capitalize"
+					style="
+						text-align: center;
+						padding: 40px;
+						color: rgb(254, 209, 54);
+						padding-top: 55px;
+						margin-bottom: -35px;
+						font-family: 'Kaushan Script', serif;
+					"
+				>
+					Destinos disponíveis
+				</h1>
+				<div
+					class="form-container"
+					style="
+						border-radius: 30px;
+						box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.4);
+						background: #343a40;
+						margin-top: 60px;
+						margin-bottom: 10px;
+						padding: 40px;
+					"
+				>
+					<div class="row">
+						<div class="col">
+							<div
+								class="card"
+								style="
+									border-top-left-radius: 20px;
+									border-top-right-radius: 20px;
+									border-bottom-right-radius: 20px;
+									border-bottom-left-radius: 20px;
+									box-shadow: 2px 2px 16px 8px rgba(0, 0, 0, 0.1);
+									border-style: none;
+									background: var(--bs-gray);
+								"
+							>
+								<div
+									style="
+										background: url('assets/img/city_bg.jpg') center / cover;
+										border-top-left-radius: 20px;
+										border-top-right-radius: 20px;
+										position: relative;
+										height: 230px;
+									"
+								>
+									<div
+										class="
+											d-flex
+											flex-row
+											justify-content-center
+											align-items-center
+										"
+										style="
+											border-radius: 39px;
+											width: 60px;
+											height: 60px;
+											position: absolute;
+											bottom: -31px;
+											right: 20px;
+										"
+									>
+										<button
+											class="btn btn-primary"
+											data-bss-hover-animate="pulse"
+											type="button"
+											onclick="window.location.href = 'agendar-destino.html'"
+											style="
+												border-style: none;
+												background: #b86868;
+												width: 60px;
+												height: 60px;
+												border-radius: 39px;
+												box-shadow: 2px 2px 20px -1px #757575;
+											"
+										>
+											<i
+												class="fas fa-calendar-day"
+												style="color: rgb(255, 255, 255); font-size: 20px"
+											></i>
+										</button>
+									</div>
+								</div>
+								<div
+									class="card-body d-flex flex-column justify-content-between"
+									style="
+										padding-bottom: 20px;
+										color: var(--bs-indigo);
+										border-color: var(--bs-purple);
+										background: var(--bs-gray);
+										border-radius: 20px;
+									"
+								>
+									<div>
+										<h6
+											class="text-muted d-inline mb-2"
+											style="
+												color: #757575;
+												font-size: 20px;
+												font-family: 'Source Sans Pro', sans-serif;
+												font-weight: 600;
+												border-bottom-right-radius: 10px;
+												border-top-right-radius: 10px;
+												margin-left: -20px;
+												padding-left: 20px;
+												padding-right: 8px;
+												padding-bottom: 2px;
+												background: var(--bs-light);
+												padding-top: 2px;
+											"
+										>
+											R$80,00 a R$300,00
+										</h6>
+										<h4
+											style="
+												color: rgb(254, 209, 54);
+												text-align: center;
+												margin-bottom: 30px;
+												font-weight: bold;
+											"
+										>
+											Ilha da Capri
+										</h4>
+										<p
+											style="
+												font-family: 'Source Sans Pro', sans-serif;
+												color: #212121;
+												font-weight: bold;
+											"
+										>
+											A maquiagem artística é uma técnica diferente da make
+											social, e da que usamos no nosso dia a dia.
+											<br />
+										</p>
+									</div>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+											margin-bottom: 10px;
+										"
+										data-bs-toggle="modal"
+										data-bs-target="#modal-cancelamento"
+									>
+										Excluir
+									</a>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										href="alterar-destino.html"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+										"
+									>
+										Editar
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div
+								class="card"
+								style="
+									border-top-left-radius: 20px;
+									border-top-right-radius: 20px;
+									border-bottom-right-radius: 20px;
+									border-bottom-left-radius: 20px;
+									box-shadow: 2px 2px 16px 8px rgba(0, 0, 0, 0.1);
+									border-style: none;
+									border-top-color: var(--bs-gray-300);
+									background: var(--bs-gray);
+								"
+							>
+								<div
+									style="
+										width: 100%;
+										height: 230px;
+										background: url('assets/img/praia_bg.jpg') center / cover;
+										border-top-left-radius: 20px;
+										border-top-right-radius: 20px;
+										position: relative;
+									"
+								>
+									<div
+										class="
+											d-flex
+											flex-row
+											justify-content-center
+											align-items-center
+										"
+										style="
+											border-radius: 39px;
+											width: 60px;
+											height: 60px;
+											position: absolute;
+											bottom: -31px;
+											right: 20px;
+										"
+									>
+										<button
+											class="btn btn-primary"
+											data-bss-hover-animate="pulse"
+											type="button"
+											onclick="window.location.href = 'agendar-destino.html'"
+											style="
+												border-style: none;
+												background: #b86868;
+												width: 60px;
+												height: 60px;
+												border-radius: 39px;
+												box-shadow: 2px 2px 20px -1px #757575;
+											"
+										>
+											<i
+												class="fas fa-calendar-day"
+												style="color: rgb(255, 255, 255); font-size: 20px"
+											></i>
+										</button>
+									</div>
+								</div>
+								<div
+									class="card-body d-flex flex-column justify-content-between"
+									style="
+										padding-bottom: 20px;
+										background: var(--bs-gray);
+										border-radius: 20px;
+									"
+								>
+									<div>
+										<h6
+											class="text-muted d-inline mb-2"
+											style="
+												color: #757575;
+												font-size: 20px;
+												font-family: 'Source Sans Pro', sans-serif;
+												font-weight: 600;
+												border-bottom-right-radius: 10px;
+												border-top-right-radius: 10px;
+												margin-left: -20px;
+												padding-left: 20px;
+												padding-right: 8px;
+												padding-bottom: 2px;
+												background: var(--bs-light);
+												padding-top: 2px;
+											"
+										>
+											R$80,00 a R$300,00
+										</h6>
+										<h4
+											style="
+												color: rgb(254, 209, 54);
+												text-align: center;
+												margin-bottom: 30px;
+												font-weight: bold;
+											"
+										>
+											Guarujá
+										</h4>
+										<p
+											style="
+												font-family: 'Source Sans Pro', sans-serif;
+												color: #212121;
+												font-weight: bold;
+											"
+										>
+											A maquiagem artística é uma técnica diferente da make
+											social, e da que usamos no nosso dia a dia.
+											<br />
+										</p>
+									</div>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+											margin-bottom: 10px;
+										"
+										data-bs-toggle="modal"
+										data-bs-target="#modal-cancelamento"
+									>
+										Excluir
+									</a>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										href="alterar-destino.html"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+										"
+									>
+										Editar
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col">
+							<div
+								class="card"
+								style="
+									border-top-left-radius: 20px;
+									border-top-right-radius: 20px;
+									border-bottom-right-radius: 20px;
+									border-bottom-left-radius: 20px;
+									box-shadow: 2px 2px 16px 8px rgba(0, 0, 0, 0.1);
+									border-style: none;
+									background: var(--bs-gray);
+								"
+							>
+								<div
+									style="
+										width: 100%;
+										height: 230px;
+										background: url('assets/img/fazenda_bg.jpg') center / cover;
+										border-top-left-radius: 20px;
+										border-top-right-radius: 20px;
+										position: relative;
+									"
+								>
+									<div
+										class="
+											d-flex
+											flex-row
+											justify-content-center
+											align-items-center
+										"
+										style="
+											border-radius: 39px;
+											width: 60px;
+											height: 60px;
+											position: absolute;
+											bottom: -31px;
+											right: 20px;
+										"
+									>
+										<button
+											class="btn btn-primary"
+											data-bss-hover-animate="pulse"
+											type="button"
+											onclick="window.location.href = 'agendar-destino.html'"
+											style="
+												border-style: none;
+												background: #b86868;
+												width: 60px;
+												height: 60px;
+												border-radius: 39px;
+												box-shadow: 2px 2px 20px -1px #757575;
+											"
+										>
+											<i
+												class="fas fa-calendar-day"
+												style="color: rgb(255, 255, 255); font-size: 20px"
+											></i>
+										</button>
+									</div>
+								</div>
+								<div
+									class="card-body d-flex flex-column justify-content-between"
+									style="
+										padding-bottom: 20px;
+										background: var(--bs-gray);
+										border-radius: 20px;
+									"
+								>
+									<div>
+										<h6
+											class="text-muted d-inline mb-2"
+											style="
+												color: var(--bs-white);
+												font-size: 20px;
+												font-family: 'Source Sans Pro', sans-serif;
+												font-weight: 600;
+												border-bottom-right-radius: 10px;
+												border-top-right-radius: 10px;
+												margin-left: -20px;
+												padding-left: 20px;
+												padding-right: 8px;
+												padding-bottom: 2px;
+												background: var(--bs-light);
+												padding-top: 2px;
+											"
+										>
+											R$80,00 a R$300,00
+										</h6>
+										<h4
+											style="
+												color: rgb(254, 209, 54);
+												text-align: center;
+												margin-bottom: 30px;
+												font-weight: bold;
+											"
+										>
+											Capitólio
+										</h4>
+										<p
+											style="
+												font-family: 'Source Sans Pro', sans-serif;
+												color: #212121;
+												font-weight: bold;
+											"
+										>
+											A maquiagem artística é uma técnica diferente da make
+											social, e da que usamos no nosso dia a dia.
+											<br />
+										</p>
+									</div>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+											margin-bottom: 10px;
+										"
+										data-bs-toggle="modal"
+										data-bs-target="#modal-cancelamento"
+									>
+										Excluir
+									</a>
+									<a
+										class="
+											btn btn-primary
+											d-flex d-xl-flex
+											justify-content-center
+											align-items-center
+											justify-content-xl-center
+											align-items-xl-center
+											w-100
+										"
+										role="button"
+										href="alterar-destino.html"
+										data-bss-hover-animate="pulse"
+										style="
+											background: rgb(254, 209, 54);
+											color: rgb(0, 0, 0);
+											border-radius: 15px;
+											padding-bottom: 14px;
+										"
+									>
+										Editar
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<footer
+			class="align-items-lg-end"
+			style="background: #343a40; color: rgb(52, 58, 64)"
+		>
+			<span class="copyright" style="color: rgb(254, 209, 54)">
+				RoadOn © 2021
+			</span>
+			<ul class="list-inline social-buttons">
+				<li class="list-inline-item">
+					<a href="#">
+						<i class="fa fa-twitter" style="color: rgb(254, 209, 54)"></i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a href="#" style="color: rgb(254, 209, 54)">
+						<i class="fa fa-facebook"></i>
+					</a>
+				</li>
+				<li class="list-inline-item">
+					<a href="#">
+						<i class="fa fa-instagram" style="color: rgb(254, 209, 54)"></i>
+					</a>
+				</li>
+			</ul>
+		</footer>
+		<div class="modal fade" role="dialog" tabindex="-1" id="modal-cancelamento">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div
+						class="modal-header"
+						style="background: #2f363a; border-radius: -11px; padding: 25px"
+					>
+						<h4 class="modal-title" style="color: rgb(254, 209, 54)">
+							Confirmação
+						</h4>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body" style="background: #2f363a">
+						<h3 style="color: rgb(255, 255, 255)">
+							Tem certeza que deseja excluir esta viagem?
+						</h3>
+					</div>
+					<div class="modal-footer" style="background: #2f363a">
+						<button
+							class="btn btn-danger"
+							type="button"
+							style="color: rgb(0, 0, 0)"
+						>
+							Excluir
+						</button>
+						<button
+							class="btn btn-primary"
+							type="button"
+							style="color: rgb(0, 0, 0)"
+							data-bs-dismiss="modal"
+						>
+							Sair
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/js/bs-init.js"></script>
+		<script src="assets/js/-Filterable-Cards-.js"></script>
+		<script src="assets/js/agency.js"></script>
+		<script src="assets/js/Dashboard.js"></script>
+	</body>
+</html>
