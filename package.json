@@ -22,11 +22,14 @@
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     "express-session": "^1.17.2",
 >>>>>>> 7330a3cfe088bc06b1f0c8a1c5a4a287f3ad0e47
     "passport": "^0.5.0",
     "passport-local": "^1.0.0",
+=======
+>>>>>>> parent of 408e501 (Ajustando a documentação de todas as Controllers e Routes)
     "pg": "^8.7.1"
   },
   "description": "",
