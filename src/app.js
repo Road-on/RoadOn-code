@@ -7,7 +7,7 @@ dotenv.config();
 
 const app = express();
 
-require('./auth')
+require('../src/auth')(passport)
 
 app.use(session({
   store: new (require('connect-pg-simple')(session))(), //usa process.env.DATABASE_URL internamente
