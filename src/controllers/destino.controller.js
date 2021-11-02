@@ -21,7 +21,7 @@ exports.createDestino = async (req, res) => {
 
 exports.listAllDestinos = async (req, res) => {
     const response = await db.query('SELECT * FROM destino ORDER BY nome_destino ASC');
-    res.status(200).send(response.rows);
+    res.render('destinos.ejs', { model: response.rows })
 };
 
 exports.findDestinoById = async (req, res) => {
