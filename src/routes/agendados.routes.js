@@ -10,13 +10,9 @@
  const agendarController = require('../controllers/agendar.controller')
 
  // ==> Renderização de rota:
-router.get('/agendados', (req, res) => {
-	res.render('agendados.ejs')
-})
-// ==> Rota responsável por listar todas os Agendamento: (GET): localhost:3000/api/agendar
-router.get('/agendados', agendarController.listAllExcursoes)
+router.get('/agendados', agendarController.listAllAgendamentos)
 
 // ==> Rota responsável por selecionar Agendamento pelo 'Id': (GET): localhost:3000/api/agendar/:id
-router.get('/agendados/:id', agendarController.findExcursaoById)
+router.get('/agendados/:id', agendarController.findAgendamentoById)
 
 module.exports = router;

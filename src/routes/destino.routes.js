@@ -11,11 +11,8 @@ const destinoController = require('../controllers/destino.controller')
 // ==> Renderização de rota:
 router.get('/destinos', destinoController.listAllDestinos )
 
- // ==> Rota responsável por criar uma nova Destino: (POST): localhost:3000/api/destinos
+// ==> Rota responsável por criar uma nova Destino: (POST): localhost:3000/api/destinos
  router.post('/destinos', destinoController.createDestino)
-
-// ==> Rota responsável por listar todas as Destinos: (GET): localhost:3000/api/destinos
-router.get('/destinos', destinoController.listAllDestinos )
 
 // ==> Rota responsável por selecionar Destino pelo 'Id': (GET): localhost:3000/api/destinos/:id
 router.get('/destinos/:id', destinoController.findDestinoById)

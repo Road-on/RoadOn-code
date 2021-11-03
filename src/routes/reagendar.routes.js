@@ -15,10 +15,10 @@ router.get('/reagendar', (req, res) => {
 })
 
 // ==> Rota responsável por atualizar Agendamento pelo 'Id': (PUT): localhost: 3000/api/agendar/:id
-router.put('/reagendar/:id', agendarController.updateExcursaoById)
+router.put('/reagendar/:id', agendarController.updateAgendamentoById)
 
 // ==> Rota responsável por excluir Agendamento pelo 'Id': (DELETE): localhost:3000/api/agendar/:id
-router.delete('/reagendar/:id', agendarController.deleteExcursaoById)
+router.delete('/reagendar/:id', agendarController.deleteAgendamentoById)
 
 
 module.exports = router;

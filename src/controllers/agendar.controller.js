@@ -2,7 +2,7 @@ const db = require('../config/database')
 
 // ==> Método responsável por criar um novo agendamento:
 
-exports.createExcursao = async (req, res) => {
+exports.createAgendamento = async (req, res) => {
     const {id_destino , data_saida_excursao , data_volta_excursao} = req.body;
     const { rows } = await db.query(
         "INSERT INTO agenda_excursao  (id_destino, data_saida_excursao, data_volta_excursao) VALUES ($1, $2, $3)",
@@ -19,18 +19,18 @@ exports.createExcursao = async (req, res) => {
 
 // ==> Método responsável por listar todos os agendamentos':
 
-exports.listAllExcursoes = async (req, res) => {
+exports.listAllAgendamentos = async (req, res) => {
     const response = await db.query('SELECT * FROM agenda_excursao ORDER BY id_destino ASC');
-    res.status(200).send(response.rows);
+    res.render('agendados.ejs', { model: response.rows });
 };
 
-exports.findExcursaoById = async (req, res) => {
+exports.findAgendamentoById = async (req, res) => {
     id_destino = parseInt(req.params.id);
     const response = await db.query('SELECT * FROM agenda_excursao WHERE id_excursao  = $1', [id_excursao]);
     res.status(200).send(response.rows);
 }
 
-exports.updateExcursaoById = async (req, res) => {
+exports.updateAgendamentoById = async (req, res) => {
     id_destino = parseInt(req.params.id);
     const { id_destino , data_saida_excursao , data_volta_excursao} = req.body;
     const { rows } = await db.query(
@@ -40,7 +40,7 @@ exports.updateExcursaoById = async (req, res) => {
     res.status(200).send({ message: "Excursão atualizada com sucesso!" });
 }
 
-exports.deleteExcursaoById = async (req, res) => {
+exports.deleteAgendamentoById = async (req, res) => {
     id_excursao = parseInt(req.params.id);
     const response = await db.query('DELETE FROM agenda_excursao WHERE id_excursao = $1', [id_excursao]);
     res.status(200).send({ message: "Excursão removida com sucesso!", id: id_excursao });

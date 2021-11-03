@@ -15,6 +15,6 @@ router.get('/agendar', (req, res) => {
 })
 
 // ==> Rota responsável por criar uma nova Agendamento: (POST): localhost:3000/api/agendar
-router.post('/agendar', agendarController.createExcursao)
+router.post('/agendar', agendarController.createAgendamento)
 
 module.exports = router
