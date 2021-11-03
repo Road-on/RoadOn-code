@@ -10,7 +10,7 @@ const router = require('express-promise-router')()
 const agendarController = require('../controllers/agendar.controller')
 
 // ==> Renderização de rota:
-router.get('/', (req, res) => {
+router.get('/agendar', (req, res) => {
 	res.render('agendar-destino.ejs')
 })
 

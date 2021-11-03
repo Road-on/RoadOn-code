@@ -9,7 +9,7 @@
 
  const turistaController = require('../controllers/turista.controller')
  // ==> Renderização de rota:
- router.get('/', (req, res) => {
+ router.get('/editar-turista', (req, res) => {
      res.render('editar-turista.ejs')
  }) 
 

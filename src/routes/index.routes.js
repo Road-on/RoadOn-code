@@ -7,7 +7,7 @@
  */
  const router = require('express-promise-router')()
 
- router.get('/', (req, res) => {
+ router.get('/index', (req, res) => {
     res.render('index-logado.ejs')
 })
 

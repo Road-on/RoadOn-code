@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
 })
 
 // ==> Rota responsável por criar uma nova Pessoa: (POST): localhost:3000/api/turista
-router.post('/turistas', turistaController.createPessoa)
+router.post('/registrar-turista', turistaController.createPessoa)
 
 // ==> Rota responsável por listar todas as Pessoas: (GET): localhost:3000/api/turistas
 router.get('/turistas', turistaController.listAllPessoas)

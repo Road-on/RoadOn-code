@@ -10,7 +10,7 @@
  const agendarController = require('../controllers/agendar.controller')
 
  // ==> Renderização de rota:
-router.get('/', (req, res) => {
+router.get('/reagendar', (req, res) => {
 	res.render('reagendar-destino.ejs')
 })
 

@@ -9,7 +9,7 @@ const router = require('express-promise-router')()
 
 const destinoController = require('../controllers/destino.controller')
 // ==> Renderização de rota:
-router.get('/', destinoController.listAllDestinos )
+router.get('/destinos', destinoController.listAllDestinos )
 
  // ==> Rota responsável por criar uma nova Destino: (POST): localhost:3000/api/destinos
  router.post('/destinos', destinoController.createDestino)

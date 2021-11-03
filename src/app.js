@@ -21,10 +21,10 @@ const app = express();
 // app.use(passport.session());
 
 // Função Middleware de validação
-function authenticationMiddleware(req, res, next) {
-  if (req.isAuthenticated()) return next();
-  res.redirect('/login?fail=false');
-}
+// function authenticationMiddleware(req, res, next) {
+//   if (req.isAuthenticated()) return next();
+//   res.redirect('/login?fail=false');
+// }
 
 // --> Rotas da API
 
@@ -69,18 +69,19 @@ app.use('/api/', empresaRoute)
 
 // ==> Telas
 
-app.use('/agendar', agendarRoute);
-app.use('/index', authenticationMiddleware, indexRouter)
-app.use('/reagendar', reagendarRoute);
-app.use('/agendados', agendadosRoute);
-app.use('/destinos', destinoRoute);
-app.use('/registrar-destino', registrarDestinoRoute);
-app.use('/alterar-destino', alterarDestinoRoute);
-app.use('/dashboard', dashboardRoute);
-app.use('/registrar-empresa', empresaRoute);
-app.use('/alterar-empresa', alterarEmpresaRoute);
-app.use('/registrar-turista', turistaRoute);
-app.use('/editar-turista', editarTuristaRoute);
-app.use('/login', loginRoute);
+app.use(agendarRoute);
+// app.use(authenticationMiddleware, indexRouter)
+app.use(indexRouter)
+app.use(reagendarRoute);
+app.use(agendadosRoute);
+app.use(destinoRoute);
+app.use(registrarDestinoRoute);
+app.use(alterarDestinoRoute);
+app.use(dashboardRoute);
+app.use(empresaRoute);
+app.use(alterarEmpresaRoute);
+app.use(turistaRoute);
+app.use(editarTuristaRoute);
+app.use(loginRoute);
 
 module.exports = app;

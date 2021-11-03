@@ -10,7 +10,7 @@
  const empresaController = require('../controllers/empresa.controller')
  
  // ==> Renderização de rota:
- router.get('/', (req, res) => {
+ router.get('/alterar-empresa', (req, res) => {
      res.render('alterar-empresa.ejs')
  })
 

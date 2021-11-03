@@ -9,7 +9,7 @@
 
  const destinoController = require('../controllers/destino.controller')
  // ==> Renderização de rota:
- router.get('/', (req, res) => {
+ router.get('/alterar-destino', (req, res) => {
      res.render('alterar-destino.ejs')
  })
  

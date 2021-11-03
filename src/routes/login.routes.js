@@ -3,7 +3,7 @@ const router = require('express-promise-router')()
 const passport = require('passport');
 
 /* GET login page. */
-router.get('/', (req, res, next) => {
+router.get('/login', (req, res, next) => {
     if (req.query.fail)
         res.render('login.ejs', { message: 'Login Inválido! Email e/ou senha incorretos!' });
     else
@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
 });
 
 /* POST login page */
-router.post('/',
+router.post('/login',
     passport.authenticate('local', { 
         successRedirect: '/', 
         failureRedirect: '/login?fail=true' 

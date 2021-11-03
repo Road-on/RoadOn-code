@@ -8,7 +8,7 @@
  const router = require('express-promise-router')()
 
 // ==> Renderização de rota:
-router.get('/', (req, res) => {
+router.get('/dashboard', (req, res) => {
 	res.render('dashboard.ejs')
 })
 
