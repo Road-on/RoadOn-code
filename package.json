@@ -10,11 +10,11 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "dotenv": "^10.0.0",
     "husky": "^7.0.2",
     "nodemon": "^2.0.13"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "bcryptjs": "^2.4.3",
     "connect-pg-simple": "^7.0.0",
     "cors": "^2.8.5",
