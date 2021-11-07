@@ -9,7 +9,7 @@ const router = require('express-promise-router')()
 
 const turistaController = require('../controllers/turista.controller')
 // ==> Renderização de rota:
-router.get('/', (req, res) => {
+router.get('/registrar-turista', (req, res) => {
 	res.render('registrar-turista.ejs')
 })
 
