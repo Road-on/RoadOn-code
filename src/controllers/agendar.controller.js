@@ -3,24 +3,20 @@ const db = require('../config/database')
 // ==> Método responsável por criar um novo agendamento:
 
 exports.createAgendamento = async (req, res) => {
-    const {id_destino , data_saida_excursao , data_volta_excursao} = req.body;
+    destino  = parseInt(req.query.destino);
+    const { data_saida_excursao , data_volta_excursao } = req.body;
     const { rows } = await db.query(
         "INSERT INTO agenda_excursao  (id_destino, data_saida_excursao, data_volta_excursao) VALUES ($1, $2, $3)",
-        [id_destino , data_saida_excursao , data_volta_excursao]
+        [destino , data_saida_excursao , data_volta_excursao]
     );
 
-    res.status(201).send({
-        message: "Agendado com sucesso!", 
-        body: {
-            destino: {id_destino, data_saida_excursao, data_volta_excursao}
-        },
-    });
+    res.status(201).redirect('/agendados')
 };
 
 // ==> Método responsável por listar todos os agendamentos':
 
 exports.listAllAgendamentos = async (req, res) => {
-    const response = await db.query('SELECT * FROM agenda_excursao ORDER BY id_destino ASC');
+    const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');
     res.render('agendados.ejs', { model: response.rows });
 };
 
