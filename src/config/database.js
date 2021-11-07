@@ -6,6 +6,7 @@
  */
 
  const { Pool } = require('pg');
+ const dotenv = require('dotenv').config();
 
  // ==> Conexão com a Base de Dados:
 
