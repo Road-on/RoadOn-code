@@ -4,7 +4,6 @@ const db = require('../config/database')
 
 exports.createPessoa = async (req, res) => {
     const { nome_pessoa  , telefone_pessoa  , email_pessoa } = req.body;
-    console.log(req.body)
     id_excursao = parseInt(req.body.destinos);
     const { rows } = await db.query(
         "INSERT INTO pessoa  (nome_pessoa, telefone_pessoa, email_pessoa) VALUES ($1, $2, $3)",
