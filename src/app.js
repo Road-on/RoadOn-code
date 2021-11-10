@@ -7,18 +7,17 @@ dotenv.config();
 
 const app = express();
 
-// require('../src/auth')(passport)
+require('../src/auth')(passport)
 
-// app.use(session({
-//   store: new (require('connect-pg-simple')(session))(), //usa process.env.DATABASE_URL internamente
-//   secret: process.env.SESSION_SECRET,
-//   resave: false,
-//   saveUninitialized: false,
-//   cookie: { maxAge: 30 * 60 * 1000 } //30min
-// }))
+app.use(session({
+    secret: '123',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 30 * 60 * 1000 }//30min
+ }))
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+ app.use(passport.initialize());
+ app.use(passport.session());
 
 // Função Middleware de validação
 // function authenticationMiddleware(req, res, next) {
@@ -42,15 +41,26 @@ const agendadosRoute = require('./routes/agendados.routes')
 const turistaRoute = require('./routes/turista.routes')
 const editarTuristaRoute = require('./routes/editar-turista.routes')
 const loginRoute = require('./routes/login.routes')
+//const passport = require('passport')
+//const session = require('express-session')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.json({ type: 'application/vnd.api+json' }));
 app.use(cors());
+// MAgica da sessao de login na mexer
 
-// app.use('/login', loginRouter);
-// app.use('/users', authenticationMiddleware, usersRouter);
-// app.use('/', authenticationMiddleware,  indexRouter);
+
+
+
+//function authenticationMiddleware(req, res, next) {
+ // if (req.isAuthenticated()) return next();
+ // res.redirect('/login?fail=true');
+//}
+
+
+// fim da magica 
+
 
 app.set('views','src/views') 
 app.set('view-engine', 'ejs');
@@ -70,7 +80,7 @@ app.use('/api/', empresaRoute)
 // ==> Telas
 
 app.use(agendarRoute);
-// app.use(authenticationMiddleware, indexRouter)
+//app.use(authenticationMiddleware, indexRouter)
 app.use(indexRouter)
 app.use(reagendarRoute);
 app.use(agendadosRoute);

@@ -12,7 +12,8 @@
  // ==> Conexão com a Base de Dados:
 
  const pool = new Pool({
-   connectionString: process.env.DATABASE_URL
+   //connectionString: process.env.DATABASE_URL
+   connectionString: 'postgresql://postgres:123456@localhost:5432/roadon'
  });
  pool.on('connect', () => {
    console.log('Banco de Dados conectado com sucesso!');
