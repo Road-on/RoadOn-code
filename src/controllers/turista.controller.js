@@ -13,12 +13,7 @@ exports.createPessoa = async (req, res) => {
         "INSERT INTO pessoa_excursao (id_pessoa, id_excursao) SELECT pessoa.id_pessoa, $1 FROM pessoa WHERE pessoa.id_pessoa = (SELECT MAX(id_pessoa) FROM pessoa)", [id_excursao])
         )
 
-    res.status(201).send({
-        message: "Pessoa cadastrada com sucesso!", 
-        body: {
-            destino: {nome_pessoa, telefone_pessoa, email_pessoa}
-        },
-    });
+    res.status(201).redirect('/agendados')
 };
 
 // ==> Método responsável por listar todas as Pessoas':
