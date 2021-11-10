@@ -33,14 +33,15 @@
                     <div class="mb-3">
                         <h5 style="color: rgb(254,209,54);text-align: center;margin-bottom: 30px;">Dados do passageiro</h5>
                     </div>
-                    <div class="mb-3"><input class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome do passageiro"></div>
-                    <div class="mb-3"><input class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o E-mail do passageiro"></div>
-                    <div class="mb-3"><input class="form-control" type="tel" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro">
-                        <div><select class="form-select" style="border-radius: 15px;height: 40px;">
-                                <optgroup label="This is a group">
-                                    <option value="12" selected="">This is item 1</option>
-                                    <option value="13">This is item 2</option>
-                                    <option value="14">This is item 3</option>
+                    <div class="mb-3"><input name="nome_pessoa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome do passageiro"></div>
+                    <div class="mb-3"><input name="email_pessoa" class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o E-mail do passageiro"></div>
+                    <div class="mb-3"><input name="telefone_pessoa" class="form-control" type="tel" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro">
+                        <div><select name="destinos" class="form-select"  style="border-radius: 15px;height: 40px;">
+                                <optgroup label="Destinos" >
+                                    <option value="null" selected="">Selecione um destino</option>
+                                    <% model.forEach(function(model) { %>                                   
+                                    <option name="id_excursao" value="<%= model.id_excursao%>"><%= model.id_destino%></option>
+                                    <% }) %> 
                                 </optgroup>
                             </select>
                         </div>

@@ -3,11 +3,16 @@ const db = require('../config/database')
 // ==> Método responsável por criar uma pessoa no banco de dados:
 
 exports.createPessoa = async (req, res) => {
-    const {nome_pessoa  , telefone_pessoa  , email_pessoa } = req.body;
+    const { nome_pessoa  , telefone_pessoa  , email_pessoa } = req.body;
+    console.log(req.body)
+    id_excursao = parseInt(req.body.destinos);
     const { rows } = await db.query(
         "INSERT INTO pessoa  (nome_pessoa, telefone_pessoa, email_pessoa) VALUES ($1, $2, $3)",
         [nome_pessoa , telefone_pessoa , email_pessoa]
-    );
+    ).then(
+        await db.query(
+        "INSERT INTO pessoa_excursao (id_pessoa, id_excursao) SELECT pessoa.id_pessoa, $1 FROM pessoa WHERE pessoa.id_pessoa = (SELECT MAX(id_pessoa) FROM pessoa)", [id_excursao])
+        )
 
     res.status(201).send({
         message: "Pessoa cadastrada com sucesso!", 

@@ -6,11 +6,13 @@
  * Author: Gustavo Morais
  */
 const router = require('express-promise-router')()
+const db = require('../config/database')
 
 const turistaController = require('../controllers/turista.controller')
 // ==> Renderização de rota:
-router.get('/registrar-turista', (req, res) => {
-	res.render('registrar-turista.ejs')
+router.get('/registrar-turista', async (req, res) => {
+	const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');
+	res.render('registrar-turista.ejs', { model: response.rows })
 })
 
 // ==> Rota responsável por criar uma nova Pessoa: (POST): localhost:3000/api/turista
