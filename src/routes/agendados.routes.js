@@ -13,6 +13,6 @@
 router.get('/agendados', agendarController.listAllAgendamentos)
 
 // ==> Rota responsável por selecionar Agendamento pelo 'Id': (GET): localhost:3000/api/agendar/:id
-router.get('/agendados/:id', agendarController.findAgendamentoById)
+router.get('/consulta-agendamento', agendarController.findAgendamentoById)
 
 module.exports = router;

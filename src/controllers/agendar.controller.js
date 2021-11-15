@@ -1,4 +1,6 @@
 const db = require('../config/database')
+let moment = require('moment');
+moment.locale('pt-br')
 
 // ==> Método responsável por criar um novo agendamento:
 
@@ -17,13 +19,13 @@ exports.createAgendamento = async (req, res) => {
 
 exports.listAllAgendamentos = async (req, res) => {
     const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');
-    res.render('agendados.ejs', { model: response.rows });
+    res.status(200).render('agendados.ejs', { model: response.rows, moment: moment });
 };
 
 exports.findAgendamentoById = async (req, res) => {
-    id_destino = parseInt(req.params.id);
+    id_excursao  = parseInt(req.query.excursao);
     const response = await db.query('SELECT * FROM agenda_excursao WHERE id_excursao  = $1', [id_excursao]);
-    res.status(200).send(response.rows);
+    res.status(200).render('consultar-info-agendamento.ejs', { model: response.rows, moment: moment } )
 }
 
 exports.updateAgendamentoById = async (req, res) => {

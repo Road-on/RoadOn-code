@@ -73,6 +73,7 @@
 				</div>
 			</div>
 		</nav>
+		<% model.forEach(function(model) { %>
 		<div class="container">
 			<section
 				class="register-photo"
@@ -163,8 +164,9 @@
 										font-size: 21px;
 									"
 								>
-									Fernando de Noronha
+									<%= model.id_excursao %>									
 								</label>
+								<br/>
 								<label
 									class="form-label"
 									style="
@@ -176,32 +178,7 @@
 										margin-bottom: 18px;
 									"
 								>
-									Valor por pessoa: R$220,00
-								</label>
-								<label
-									class="form-label"
-									style="
-										color: var(--bs-white);
-										text-align: center;
-										font-weight: bold;
-										font-family: Nunito, sans-serif;
-										font-size: 14px;
-									"
-								>
-									Total de passageiros: 18
-								</label>
-								<label
-									class="form-label"
-									style="
-										color: var(--bs-white);
-										text-align: center;
-										font-weight: bold;
-										font-family: Nunito, sans-serif;
-										font-size: 14px;
-										margin-bottom: 25px;
-									"
-								>
-									Vagas disponíveis: 4
+									Valor por pessoa: R$<%= model.valor_excursao %>
 								</label>
 							</div>
 							<div style="margin-top: -15px; padding: 10px">
@@ -209,46 +186,34 @@
 									class="form-label"
 									style="
 										color: var(--bs-white);
-										text-align: center;
 										font-weight: bold;
 										font-family: Nunito, sans-serif;
 										font-size: 14px;
 									"
 								>
-									Ida
-								</label>
-								<input
-									class="form-control"
-									type="date"
-									style="width: 200px; border-radius: 30px"
-									disabled
-								/>
+									Ida: <br/>
+									<%= moment(model.data_saida_excursao).format('LLLL') %>
+								</label>								
 								<label
 									class="form-label"
 									style="
 										color: var(--bs-white);
-										text-align: center;
 										font-weight: bold;
 										font-family: Nunito, sans-serif;
 										font-size: 14px;
 										margin-top: 15px;
 									"
 								>
-									Retorno
-								</label>
-								<input
-									class="form-control"
-									type="date"
-									style="width: 200px; border-radius: 30px"
-									disabled
-								/>
+									Retorno:<br/> <%= moment(model.data_volta_excursao).format('LLLL')%>
+
+								</label>								
 							</div>
 						</div>
 						<div class="mb-3">
 							<button
 								class="btn btn-primary d-block w-100"
 								type="button"
-								onclick="window.location.href = 'agendados.html'"
+								onclick="window.location.href = 'agendados'"
 								style="
 									background: var(--bs-gray-700);
 									color: rgb(0, 0, 0);
@@ -263,6 +228,7 @@
 				</div>
 			</section>
 		</div>
+		<% }) %>
 		<footer
 			class="align-items-lg-end"
 			style="background: #343a40; color: rgb(52, 58, 64)"

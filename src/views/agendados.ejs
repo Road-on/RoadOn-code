@@ -170,7 +170,7 @@
 											box-shadow: 2px 2px 20px -1px #757575;
 											margin: 10px;
 										"
-										onclick="window.location.href = 'consultar-info-agendamento.html'"
+										onclick="window.location.href = 'consulta-agendamento?excursao=<%= model.id_excursao %>'"
 									>
 										<i
 											class="fas fa-info-circle"
@@ -208,8 +208,8 @@
 											font-weight: bold;
 										"
 									>
-										Data de Ida = <%= model.data_saida_excursao %><br/><br/>
-										Data de Volta = <%= model.data_volta_excursao %>	
+										Data de Ida:<br/> <%= moment(model.data_saida_excursao).format('LLLL') %><br/><br/>
+										Data de Volta:<br/> <%= moment(model.data_volta_excursao).format('LLLL') %>	
 
 										<br />
 									</p>

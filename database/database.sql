@@ -21,10 +21,13 @@ CREATE TABLE IF NOT EXISTS Destino(
 CREATE TABLE IF NOT EXISTS Agenda_Excursao (
     id_excursao SERIAL NOT NULL PRIMARY KEY,
     id_destino SERIAL NOT NULL,
+    id_empresa SERIAL NOT NULL,
+    ponto_encontro SERIAL NOT NULL,
     data_saida_excursao TIMESTAMP NOT NULL,
     data_volta_excursao TIMESTAMP NOT NULL,
 
-    CONSTRAINT fk_id_destino FOREIGN KEY (id_destino) REFERENCES Destino(id_destino)
+    CONSTRAINT fk_id_destino FOREIGN KEY (id_destino) REFERENCES Destino(id_destino),
+    CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa)
 );
 
 CREATE TABLE IF NOT EXISTS Pessoa (
