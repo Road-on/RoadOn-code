@@ -20,4 +20,21 @@ async function connect() {
     return pool.connect();
 }
 
-module.exports = { connect }
+async function findUser(username) {
+    const conn = await connect();
+    const res = await conn.query(`SELECT * FROM empresa WHERE email_empresa=$1 LIMIT 1`, [username]);
+
+    if (res.rows.length > 0)
+        return res.rows[0];
+    else return null;
+}
+
+async function findUserById(id) {
+    const conn = await connect();
+    const res = await conn.query(`SELECT * FROM empresa WHERE id_empresa=$1 LIMIT 1`, [id]);
+    if (res.rows.length > 0)
+        return res.rows[0];
+    else return null;
+}
+
+module.exports = { connect, findUser, findUserById }
