@@ -8,7 +8,7 @@ dotenv.config();
 const app = express();
 
 require('./auth')(passport);
-
+app.use(express.static('src'));
 app.use(session({
   store: new (require('connect-pg-simple')(session))(),//usa process.env.DATABASE_URL internamente
   secret: process.env.SESSION_SECRET,
@@ -69,7 +69,7 @@ app.get('/', (req, res) => {
   res.render('index.ejs')
 })
 
-app.use(express.static('src'));
+
 
 // => Requisição API (Testes Postman)
 app.use(index);
