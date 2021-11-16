@@ -7,17 +7,18 @@ dotenv.config();
 
 const app = express();
 
-require('../src/auth')(passport)
+require('./auth')(passport);
 
 app.use(session({
-    secret: '123',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 30 * 60 * 1000 }//30min
- }))
+  store: new (require('connect-pg-simple')(session))(),//usa process.env.DATABASE_URL internamente
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { maxAge: 30 * 60 * 1000 }//30min
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
- app.use(passport.initialize());
- app.use(passport.session());
 
 // Função Middleware de validação
 // function authenticationMiddleware(req, res, next) {

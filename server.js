@@ -5,7 +5,7 @@
      * Author: Fabio Santos
  */
 
-
+require('dotenv-safe').config();
 const express = require('express');
 const app = require('./src/app');
 
