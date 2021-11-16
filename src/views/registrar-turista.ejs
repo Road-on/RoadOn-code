@@ -47,7 +47,7 @@
                                 <optgroup label="Destinos" >
                                     <option value="null" selected="">Selecione um destino</option>
                                     <% model.forEach(function(model) { %>                                   
-                                    <option name="id_excursao" value="<%= model.id_excursao%>"><%= model.id_destino%></option>
+                                    <option name="id_excursao" value="<%= model.id_excursao%>"><%= model.nome_destino%> - <%= moment(model.data_saida_excursao).format('lll') %> ~ <%= moment(model.data_volta_excursao).format('lll') %></option>
                                     <% }) %> 
                                 </optgroup>
                             </select>

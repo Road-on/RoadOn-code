@@ -20,7 +20,7 @@ exports.createAgendamento = async (req, res) => {
 
 exports.listAllAgendamentos = async (req, res) => {
     const { id_excursao } = req.body;
-    const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');   
+    const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino ORDER BY agenda_excursao.data_saida_excursao ASC');   
     res.status(200).render('agendados.ejs', { model: response.rows, moment: moment });
 };
 
