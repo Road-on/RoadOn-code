@@ -17,4 +17,7 @@ router.get('/destinos', destinoController.listAllDestinos )
 // ==> Rota responsável por selecionar Destino pelo 'Id': (GET): localhost:3000/api/destinos/:id
 router.get('/destinos/:id', destinoController.findDestinoById)
 
+router.get('/destinos/excluir/:id', destinoController.deleteDestinoById)
+
+
 module.exports = router

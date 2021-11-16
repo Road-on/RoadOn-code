@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS Destino(
     minimo_passageiro_excursao INTEGER NOT NULL, 
     maximo_passageiro_excursao INTEGER NOT NULL, 
 	
-	CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa)
+	CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Agenda_Excursao (
@@ -26,8 +26,8 @@ CREATE TABLE IF NOT EXISTS Agenda_Excursao (
     data_saida_excursao TIMESTAMP NOT NULL,
     data_volta_excursao TIMESTAMP NOT NULL,
 
-    CONSTRAINT fk_id_destino FOREIGN KEY (id_destino) REFERENCES Destino(id_destino),
-    CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa)
+    CONSTRAINT fk_id_destino FOREIGN KEY (id_destino) REFERENCES Destino(id_destino) ON DELETE CASCADE,
+    CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS Pessoa (
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS Pessoa_Excursao(
     id_pessoa SERIAL NOT NULL,
     id_excursao SERIAL NOT NULL,
 	
-    CONSTRAINT fk_id_pessoa FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id_pessoa),
-    CONSTRAINT fk_id_excursao FOREIGN KEY (id_excursao) REFERENCES Agenda_Excursao(id_excursao),
+    CONSTRAINT fk_id_pessoa FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id_pessoa) ON DELETE CASCADE,
+    CONSTRAINT fk_id_excursao FOREIGN KEY (id_excursao) REFERENCES Agenda_Excursao(id_excursao) ON DELETE CASCADE,
 	CONSTRAINT pk_id_excursao_pessoa PRIMARY KEY (id_excursao, id_pessoa)
 );

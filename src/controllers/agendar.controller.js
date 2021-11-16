@@ -6,10 +6,11 @@ moment.locale('pt-br')
 
 exports.createAgendamento = async (req, res) => {
     destino  = parseInt(req.query.destino);
+    let empresa = 1
     const { data_saida_excursao , data_volta_excursao } = req.body;
     const { rows } = await db.query(
-        "INSERT INTO agenda_excursao  (id_destino, data_saida_excursao, data_volta_excursao) VALUES ($1, $2, $3)",
-        [destino , data_saida_excursao , data_volta_excursao]
+        "INSERT INTO agenda_excursao  (id_destino, id_empresa, data_saida_excursao, data_volta_excursao) VALUES ($1, $2, $3, $4)",
+        [destino , empresa, data_saida_excursao , data_volta_excursao]
     );
 
     res.status(201).redirect('/agendados')
@@ -18,7 +19,8 @@ exports.createAgendamento = async (req, res) => {
 // ==> Método responsável por listar todos os agendamentos':
 
 exports.listAllAgendamentos = async (req, res) => {
-    const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');
+    const { id_excursao } = req.body;
+    const response = await db.query('SELECT * FROM agenda_excursao ORDER BY data_saida_excursao ASC');   
     res.status(200).render('agendados.ejs', { model: response.rows, moment: moment });
 };
 
@@ -41,5 +43,5 @@ exports.updateAgendamentoById = async (req, res) => {
 exports.deleteAgendamentoById = async (req, res) => {
     id_excursao = parseInt(req.params.id);
     const response = await db.query('DELETE FROM agenda_excursao WHERE id_excursao = $1', [id_excursao]);
-    res.status(200).send({ message: "Excursão removida com sucesso!", id: id_excursao });
+    res.status(200).redirect('/agendados')
 }

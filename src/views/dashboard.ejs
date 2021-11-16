@@ -111,14 +111,14 @@
 															"
 														>
 															<span>
-																Ganhos
+																Excursões
 																<br />
-																(Mensal)
+																Pendentes
 															</span>
 														</div>
 														<div class="text-dark fw-bold h5 mb-0">
 															<span style="color: rgb(255, 255, 255)">
-																$40,000
+																5
 															</span>
 														</div>
 													</div>
@@ -269,9 +269,7 @@
 												"
 											>
 												<div class="chart-area">
-													<canvas
-														data-bss-chart='{"type":"line","data":{"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"],"datasets":[{"label":"Earnings","fill":true,"data":["0","10000","5000","15000","10000","20000","15000","25000"],"backgroundColor":"rgba(78, 115, 223, 0.05)","borderColor":"rgba(78, 115, 223, 1)"}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"},"scales":{"xAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"],"drawOnChartArea":false},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}],"yAxes":[{"gridLines":{"color":"rgb(234, 236, 244)","zeroLineColor":"rgb(234, 236, 244)","drawBorder":false,"drawTicks":false,"borderDash":["2"],"zeroLineBorderDash":["2"]},"ticks":{"fontColor":"#858796","fontStyle":"normal","padding":20}}]}}}'
-													></canvas>
+													<canvas id="myChart"></canvas>
 												</div>
 											</div>
 										</div>
@@ -310,9 +308,7 @@
 												"
 											>
 												<div class="chart-area">
-													<canvas
-														data-bss-chart='{"type":"doughnut","data":{"labels":["Direct","Social","Referral"],"datasets":[{"label":"","backgroundColor":["#4e73df","#1cc88a","#36b9cc"],"borderColor":["#ffffff","#ffffff","#ffffff"],"data":["50","30","15"]}]},"options":{"maintainAspectRatio":false,"legend":{"display":false,"labels":{"fontStyle":"normal"}},"title":{"fontStyle":"normal"}}}'
-													></canvas>
+													<canvas id="myChart2"></canvas>
 												</div>
 												<div class="text-center small mt-4">
 													<span class="me-2">
@@ -434,10 +430,128 @@
 			</ul>
 		</footer>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/js/chart.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 		<script src="assets/js/bs-init.js"></script>
 		<script src="assets/js/-Filterable-Cards-.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script src="assets/js/Dashboard.js"></script>
+
+		<script>
+			new Chart('myChart', {
+				type: 'line',
+				data: {
+					labels: [
+						'Jan',
+						'Fev',
+						'Mar',
+						'Abr',
+						'Mai',
+						'Jun',
+						'Jul',
+						'Ago',
+						'Set',
+						'Out',
+						'Nov',
+						'Dez',
+					],
+					datasets: [
+						{
+							label: 'Earnings',
+							fill: true,
+							data: [
+								'0',
+								'10000',
+								'5000',
+								'15000',
+								'10000',
+								'20000',
+								'15000',
+								'25000',
+								'3000',
+								'300',
+							],
+							backgroundColor: 'rgba(78, 115, 223, 0.05)',
+							borderColor: 'rgba(78, 115, 223, 1)',
+						},
+					],
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false,
+						labels: {
+							fontStyle: 'normal',
+						},
+					},
+					title: {
+						fontStyle: 'normal',
+					},
+					scales: {
+						xAxes: [
+							{
+								gridLines: {
+									color: 'rgb(234, 236, 244)',
+									zeroLineColor: 'rgb(234, 236, 244)',
+									drawBorder: false,
+									drawTicks: false,
+									borderDash: ['2'],
+									zeroLineBorderDash: ['2'],
+									drawOnChartArea: false,
+								},
+								ticks: {
+									fontColor: '#858796',
+									fontStyle: 'normal',
+									padding: 20,
+								},
+							},
+						],
+						yAxes: [
+							{
+								gridLines: {
+									color: 'rgb(234, 236, 244)',
+									zeroLineColor: 'rgb(234, 236, 244)',
+									drawBorder: false,
+									drawTicks: false,
+									borderDash: ['2'],
+									zeroLineBorderDash: ['2'],
+								},
+								ticks: {
+									fontColor: '#858796',
+									fontStyle: 'normal',
+									padding: 20,
+								},
+							},
+						],
+					},
+				},
+			})
+
+			new Chart('myChart2', {
+				type: 'doughnut',
+				data: {
+					labels: ['Direct', 'Social', 'Referral'],
+					datasets: [
+						{
+							label: '',
+							backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
+							borderColor: ['#ffffff', '#ffffff', '#ffffff'],
+							data: ['50', '30', '15'],
+						},
+					],
+				},
+				options: {
+					maintainAspectRatio: false,
+					legend: {
+						display: false,
+						labels: {
+							fontStyle: 'normal',
+						},
+					},
+					title: {
+						fontStyle: 'normal',
+					},
+				},
+			})
+		</script>
 	</body>
 </html>
