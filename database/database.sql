@@ -42,3 +42,14 @@ CREATE TABLE IF NOT EXISTS Pessoa_Excursao(
     CONSTRAINT fk_id_excursao FOREIGN KEY (id_excursao) REFERENCES Agenda_Excursao(id_excursao),
 	CONSTRAINT pk_id_excursao_pessoa PRIMARY KEY (id_excursao, id_pessoa)
 );
+
+CREATE TABLE "session" (
+  "sid" varchar NOT NULL COLLATE "default",
+	"sess" json NOT NULL,
+	"expire" timestamp(6) NOT NULL
+)
+WITH (OIDS=FALSE);
+
+ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
+
+CREATE INDEX "IDX_session_expire" ON "session" ("expire");
