@@ -55,13 +55,14 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								href="registrar-turista"
-								style="margin-right: 28px"
+								href="registrar-turista"								
 							>
 								incluir turistas
 							</a>
 						</li>
-						<li class="nav-item"></li>
+						<li class="nav-item">
+							<a class="nav-link" style="margin-right: 28px" href="alterar-empresa">Editar Empresa</a>
+						</li>
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -207,7 +208,26 @@
 								>
 									Retorno:<br/> <%= moment(model.data_volta_excursao).format('LLLL')%>
 
-								</label>								
+								</label>
+
+								<label
+									class="form-label"
+									style="
+										color: var(--bs-white);
+										font-weight: bold;
+										font-family: Nunito, sans-serif;
+										font-size: 14px;
+										margin-top: 15px;
+									"
+								>
+									Roteiro:<br/> 
+										<%= model.roteiro_excursao %>
+									</p>
+
+								</label>
+								
+								
+								
 							</div>
 						</div>
 						<div class="mb-3">

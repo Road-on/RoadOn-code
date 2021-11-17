@@ -1,26 +1,71 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>Home - Brand</title>
+		<%- include('head') %>
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
-    <%- include('head') %>
-</head>
-
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54" style="background: rgb(47,54,58);">
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav" style="background: rgb(47,54,58);">
-        <div class="container"><a class="navbar-brand" href="index">Road.On</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 12px;">
-                <ul class="navbar-nav ms-auto text-uppercase">
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"><a class="nav-link" href="agendados">Agendados</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="destinos">Destinos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="dashboard">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="registrar-turista" style="margin-right: 28px;">incluir turistas</a></li>
-                    <li class="nav-item"></li>
-                </ul><button
+	<body
+		id="page-top"
+		data-bs-spy="scroll"
+		data-bs-target="#mainNav"
+		data-bs-offset="54"
+		style="background: rgb(47, 54, 58)"
+	>
+		<nav
+			class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark"
+			id="mainNav"
+			style="background: rgb(47, 54, 58)"
+		>
+			<div class="container">
+				<a class="navbar-brand" href="index">Road.On</a>
+				<button
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarResponsive"
+					class="navbar-toggler navbar-toggler-right"
+					type="button"
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<i class="fa fa-bars"></i>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarResponsive"
+					style="padding-right: 12px"
+				>
+					<ul class="navbar-nav ms-auto text-uppercase">
+						<li class="nav-item"></li>
+						<li class="nav-item"></li>
+						<li class="nav-item">
+							<a class="nav-link" href="agendados">Agendados</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="destinos">Destinos</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="dashboard">Dashboard</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="registrar-turista">incluir turistas</a>
+						</li>
+						<li class="nav-item">
+							<a
+								class="nav-link"
+								style="margin-right: 28px"
+								href="alterar-empresa"
+							>
+								Editar Empresa
+							</a>
+						</li>
+					</ul>
+					<button
 						class="btn btn-primary text-uppercase"
 						type="button"
 						style="color: rgb(0, 0, 0); width: 97.4844px; height: 45px"
@@ -28,33 +73,132 @@
 					>
 						Sair
 					</button>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <section class="register-photo" style="background: rgb(47,54,58);margin-bottom: 5px;margin-top: 30px;padding-bottom: 50px;">
-            <h1 class="text-capitalize" style="text-align: center;padding: 40px;color: rgb(254,209,54);padding-top: 55px;margin-bottom: -35px;font-family: 'Kaushan Script', serif;">Cadastre seu destino</h1>
-            <div class="form-container" style="border-radius: 30px;box-shadow: 3px 6px 20px rgba(0,0,0,0.4);background: #343a40;padding: 40px;margin-top: 60px;margin-bottom: 10px;">
-                <div class="image-holder" style="border-radius: 30px;background: url(&quot;assets/img/ryan-wilson-HkF6feHrGBE-unsplash.jpg&quot;) center / cover;width: 606px;"></div>
-                <form method="post" style="border-radius: 30px;background: rgb(52,58,64);width: 515px;padding: 105px 60px;padding-left: 65px;padding-right: 10px;padding-top: 40px;">
-                    <div class="mb-3">
-                        <h5 style="color: rgb(254,209,54);text-align: center;margin-bottom: 18px;">Dados</h5>
-                    </div>
-                    <div class="mb-3"><input class="form-control" type="text" name="nome_destino" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a cidade de destino"></div>
-                    <div class="mb-3"><input class="form-control" type="number" name="minimo_passageiro_excursao" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o número mínimo de passageiros"></div>
-                    <div class="mb-3"><input class="form-control" type="number" name="maximo_passageiro_excursao" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o limite de passageiros">
-                                      <input class="form-control" type="number" name="valor_excursao" placeholder="Digite o valor por pessoa" style="border-radius: 15px;"></div>
-                    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Cadastrar!</button></div>
-                </form>
-            </div>
-        </section>
-    </div>
-    <%- include('footer') %>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/-Filterable-Cards-.js"></script>
-    <script src="assets/js/agency.js"></script>
-    <script src="assets/js/Dashboard.js"></script>
-</body>
-
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<section
+				class="register-photo"
+				style="
+					background: rgb(47, 54, 58);
+					margin-bottom: 5px;
+					margin-top: 30px;
+					padding-bottom: 50px;
+				"
+			>
+				<h1
+					class="text-capitalize"
+					style="
+						text-align: center;
+						padding: 40px;
+						color: rgb(254, 209, 54);
+						padding-top: 55px;
+						margin-bottom: -35px;
+						font-family: 'Kaushan Script', serif;
+					"
+				>
+					Cadastre seu destino
+				</h1>
+				<div
+					class="form-container"
+					style="
+						border-radius: 30px;
+						box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.4);
+						background: #343a40;
+						padding: 40px;
+						margin-top: 60px;
+						margin-bottom: 10px;
+					"
+				>
+					<div
+						class="image-holder"
+						style="
+							border-radius: 30px;
+							background: url('assets/img/ryan-wilson-HkF6feHrGBE-unsplash.jpg')
+								center / cover;
+							width: 606px;
+						"
+					></div>
+					<form
+						method="post"
+						style="
+							border-radius: 30px;
+							background: rgb(52, 58, 64);
+							width: 515px;
+							padding: 105px 60px;
+							padding-left: 65px;
+							padding-right: 10px;
+							padding-top: 40px;
+						"
+					>
+						<div class="mb-3">
+							<h5
+								style="
+									color: rgb(254, 209, 54);
+									text-align: center;
+									margin-bottom: 18px;
+								"
+							>
+								Dados
+							</h5>
+						</div>
+						<div class="mb-3">
+							<input
+								class="form-control"
+								type="text"
+								name="nome_destino"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite a cidade de destino"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								class="form-control"
+								type="number"
+								name="minimo_passageiro_excursao"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite o número mínimo de passageiros"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								class="form-control"
+								type="number"
+								name="maximo_passageiro_excursao"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite o limite de passageiros"
+							/>
+							<input
+								class="form-control"
+								type="number"
+								name="valor_excursao"
+								placeholder="Digite o valor por pessoa"
+								style="border-radius: 15px"
+							/>
+						</div>
+						<div class="mb-3">
+							<button
+								class="btn btn-primary d-block w-100"
+								type="submit"
+								style="
+									background: rgb(254, 209, 54);
+									color: rgb(0, 0, 0);
+									border-radius: 15px;
+									padding-bottom: 14px;
+								"
+							>
+								Cadastrar!
+							</button>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+		<%- include('footer') %>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/js/bs-init.js"></script>
+		<script src="assets/js/-Filterable-Cards-.js"></script>
+		<script src="assets/js/agency.js"></script>
+		<script src="assets/js/Dashboard.js"></script>
+	</body>
 </html>

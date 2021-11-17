@@ -42,7 +42,7 @@
 				>
 					<ul class="navbar-nav ms-auto text-uppercase">
 						<li class="nav-item"></li>
-						<li class="nav-item"></li>
+						
 						<li class="nav-item">
 							<a class="nav-link active" href="#page-top">Agendados</a>
 						</li>
@@ -55,13 +55,14 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								href="registrar-turista"
-								style="margin-right: 28px"
+								href="registrar-turista"								
 							>
 								incluir turistas
 							</a>
 						</li>
-						<li class="nav-item"></li>
+						<li class="nav-item">
+							<a class="nav-link" style="margin-right: 28px" href="alterar-empresa">Editar Empresa</a>
+						</li>
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -211,8 +212,7 @@
 										Data de Ida:<br/> <%= moment(model.data_saida_excursao).format('LLLL') %><br/><br/>
 										Data de Volta:<br/> <%= moment(model.data_volta_excursao).format('LLLL') %>	
 
-										<br />
-									</p>
+										<br /><br />										
 								</div>
 								<a
 									class="

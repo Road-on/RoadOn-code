@@ -6,11 +6,11 @@ moment.locale('pt-br')
 
 exports.createAgendamento = async (req, res) => {
     destino  = parseInt(req.query.destino);
-    let empresa = 1
-    const { data_saida_excursao , data_volta_excursao } = req.body;
+    const { id_empresa } = req.user;
+    const { data_saida_excursao , data_volta_excursao, roteiro_excursao } = req.body;
     const { rows } = await db.query(
-        "INSERT INTO agenda_excursao  (id_destino, id_empresa, data_saida_excursao, data_volta_excursao) VALUES ($1, $2, $3, $4)",
-        [destino , empresa, data_saida_excursao , data_volta_excursao]
+        "INSERT INTO agenda_excursao  (id_destino, id_empresa, data_saida_excursao, data_volta_excursao, roteiro_excursao) VALUES ($1, $2, $3, $4, $5)",
+        [destino , id_empresa, data_saida_excursao , data_volta_excursao, roteiro_excursao]
     );
 
     res.status(201).redirect('/agendados')
