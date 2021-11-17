@@ -9,7 +9,7 @@ const router = require('express-promise-router')()
 
 const agendarController = require('../controllers/agendar.controller')
 
-const db = require('../config/database')
+const db = require('../database')
 
 // ==> Renderização de rota:
 router.get('/agendar', async (req, res) => {

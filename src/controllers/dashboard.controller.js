@@ -1,4 +1,4 @@
-const db = require('../config/database')
+const db = require('../database')
 
 exports.populaDados = async (req, res) => {
     const pendentes = await db.query('SELECT COUNT(id_excursao) as agendamentos FROM Agenda_Excursao WHERE data_saida_excursao > CURRENT_DATE');

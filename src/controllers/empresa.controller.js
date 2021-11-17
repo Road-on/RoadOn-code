@@ -1,4 +1,4 @@
-const db = require("../config/database");
+const db = require("../database");
 const bcrypt = require('bcryptjs');
 // ==> Método responsável por criar uma nova Empresa':
 

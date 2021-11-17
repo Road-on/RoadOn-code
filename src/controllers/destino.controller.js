@@ -1,4 +1,4 @@
-const db = require('../config/database')
+const db = require('../database')
 
 // ==> Método responsável por criar um novo Destino:
 

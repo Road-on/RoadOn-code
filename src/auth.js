@@ -9,7 +9,7 @@ module.exports = function (passport) {
 
     passport.deserializeUser(async (id, done) => {
         try {
-            const db = require('./db');
+            const db = require('./database');
             const user = await db.findUserById(id);
             done(null, user);
         } catch (err) {
@@ -23,7 +23,7 @@ module.exports = function (passport) {
     },
         async (username, password, done) => {
             try {
-                const db = require('./db');
+                const db = require('./database');
                 const user = await db.findUser(username);
 
                 // usuário inexistente

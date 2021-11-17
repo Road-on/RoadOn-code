@@ -1,4 +1,4 @@
-const db = require('../config/database')
+const db = require('../database')
 
 // ==> Método responsável por criar uma pessoa no banco de dados:
 

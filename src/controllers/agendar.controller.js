@@ -1,4 +1,4 @@
-const db = require('../config/database')
+const db = require('../database')
 let moment = require('moment');
 moment.locale('pt-br')
 
