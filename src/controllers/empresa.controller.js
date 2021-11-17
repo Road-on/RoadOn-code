@@ -10,7 +10,7 @@ exports.createEmpresa = async (req, res) => {
     [nome_empresa, cnpj_empresa, telefone_empresa, email_empresa, senhaHash]
   );
 
-  res.status(201).redirect('/index')
+  res.status(201).redirect('/login')
 };
 
 // ==> Método responsável por listar todos as Empresas':
