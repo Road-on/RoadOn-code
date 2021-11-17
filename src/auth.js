@@ -1,44 +1,42 @@
-// const bcrypt = require('bcryptjs');
-// const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
+const LocalStrategy = require('passport-local').Strategy;
 
-// module.exports = function (passport) {
-//     console.log('aqui eu chego')
-    
-//     passport.serializeUser((empresa, done) => {
-//         console.log('aqui eu morri'); //ELE MORRE AQUI!!!!!!!!
-//         done(null, empresa.id);
-//     });
+module.exports = function (passport) {
 
-//     passport.deserializeUser(async (id, done) => {
-//         try {
-//             const db = require('../src/config/database')
-//             const empresa = await db.findEmpresaById(id);
-//             done(null, empresa);
-//         } catch (err) {
-//             done(err, null);
-//         }
-//     });
+    passport.serializeUser((user, done) => {
+        done(null, user.id_empresa);
+    });
 
-//     passport.use(new LocalStrategy({
-//         emailField: 'email',
-//         passwordField: 'password'
-//     },
-//         async (email, password, done) => {
-//             try {
-//                 const db = require('../config/database');
-//                 const empresa = await db.findEmpresa(email);
+    passport.deserializeUser(async (id, done) => {
+        try {
+            const db = require('./db');
+            const user = await db.findUserById(id);
+            done(null, user);
+        } catch (err) {
+            done(err, null);
+        }
+    });
 
-//                 // empresa inexistente
-//                 if (!empresa) { return done(null, false) }
+    passport.use(new LocalStrategy({
+        usernameField: 'username',
+        passwordField: 'password'
+    },
+        async (username, password, done) => {
+            try {
+                const db = require('./db');
+                const user = await db.findUser(username);
 
-//                 // comparando as senhas
-//                 const isValid = bcrypt.compareSync(password, empresa.password);
-//                 if (!isValid) return done(null, false)
+                // usuário inexistente
+                if (!user) { return done(null, false) }
+
+                // comparando as senhas
+                const isValid = bcrypt.compareSync(password, user.senha_empresa);
+                if (!isValid) return done(null, false)
                 
-//                 return done(null, empresa)
-//             } catch (err) {
-//                 done(err, false);
-//             }
-//         }
-//     ));
-// }
+                return done(null, user)
+            } catch (err) {
+                done(err, false);
+            }
+        }
+    ));
+}
