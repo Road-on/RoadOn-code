@@ -26,7 +26,7 @@ exports.listAllAgendamentos = async (req, res) => {
 
 exports.findAgendamentoById = async (req, res) => {
     id_excursao  = parseInt(req.query.excursao);
-    const response = await db.query('SELECT * FROM agenda_excursao WHERE id_excursao  = $1', [id_excursao]);
+    const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_excursao  = $1', [id_excursao]);
     res.status(200).render('consultar-info-agendamento.ejs', { model: response.rows, moment: moment } )
 }
 

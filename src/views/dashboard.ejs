@@ -111,6 +111,7 @@
 																mb-1
 															"
 														>
+														<% modelPendentes.forEach(function(modelPendentes) { %>
 															<span>
 																Excursões
 																<br />
@@ -119,9 +120,10 @@
 														</div>
 														<div class="text-dark fw-bold h5 mb-0">
 															<span style="color: rgb(255, 255, 255)">
-																5
+																<%= modelPendentes.agendamentos %>
 															</span>
 														</div>
+														<% }) %>
 													</div>
 													<div class="col-auto">
 														<i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -146,6 +148,7 @@
 																mb-1
 															"
 														>
+														<% modelLucroAnual.forEach(function(modelLucroAnual) { %>
 															<span>
 																Ganhos
 																<br />
@@ -154,9 +157,10 @@
 														</div>
 														<div class="text-dark fw-bold h5 mb-0">
 															<span style="color: rgb(255, 255, 255)">
-																$215,000
+																R$ <%= modelLucroAnual.qtd %>
 															</span>
 														</div>
+														<% }) %>
 													</div>
 													<div class="col-auto">
 														<i
@@ -183,6 +187,7 @@
 																mb-1
 															"
 														>
+														<% modelLucroViagem.forEach(function(modelLucroViagem) { %>
 															<span style="color: rgb(39, 180, 200)">
 																Ganhos
 																<br />
@@ -191,9 +196,10 @@
 														</div>
 														<div class="text-dark fw-bold h5 mb-0">
 															<span style="color: rgb(255, 255, 255)">
-																$215,000
+																R$ <%= modelLucroViagem.qtd%>
 															</span>
 														</div>
+														<% }) %>
 													</div>
 													<div class="col-auto">
 														<i
@@ -220,6 +226,7 @@
 																mb-1
 															"
 														>
+														<% modelRealizados.forEach(function(modelRealizados) { %>
 															<span>
 																Excursões
 																<br />
@@ -227,8 +234,9 @@
 															</span>
 														</div>
 														<div class="text-dark fw-bold h5 mb-0">
-															<span style="color: rgb(255, 255, 255)">18</span>
+															<span style="color: rgb(255, 255, 255)"><%= modelRealizados.agendamentos %></span>
 														</div>
+														<% }) %>
 													</div>
 													<div class="col-auto">
 														<i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -306,34 +314,14 @@
 													background: #343a40;
 													border-bottom-right-radius: 30px;
 													border-bottom-left-radius: 30px;
+													margin-top: 15px;
+													height: 212px;
 												"
 											>
 												<div class="chart-area">
 													<canvas id="myChart2"></canvas>
 												</div>
-												<div class="text-center small mt-4">
-													<span class="me-2">
-														<i
-															class="fas fa-circle"
-															style="color: rgb(54, 185, 204)"
-														></i>
-														&nbsp;Hopi Hari
-													</span>
-													<span class="me-2">
-														<i
-															class="fas fa-circle"
-															style="color: rgb(28, 200, 138)"
-														></i>
-														&nbsp;Beach Park
-													</span>
-													<span class="me-2">
-														<i
-															class="fas fa-circle"
-															style="color: rgb(78, 115, 223)"
-														></i>
-														&nbsp;Aparecida&nbsp;
-													</span>
-												</div>
+												
 											</div>
 										</div>
 									</div>
@@ -415,6 +403,104 @@
 		<script src="assets/js/Dashboard.js"></script>
 
 		<script>
+			let dadosMeses = []
+			console.log('<%= modelJaneiro.length %>')
+			if ('<%= modelJaneiro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelJaneiro.forEach(function(modelJaneiro) { %>'
+					dadosMeses.push(parseFloat('<%= modelJaneiro.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelFevereiro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelFevereiro.forEach(function(modelFevereiro) { %>'
+					dadosMeses.push(parseFloat('<%= modelFevereiro.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelMarco.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelMarco.forEach(function(modelMarco) { %>'
+					dadosMeses.push(parseFloat('<%= modelMarco.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelAbril.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelAbril.forEach(function(modelAbril) { %>'
+					dadosMeses.push(parseFloat('<%= modelAbril.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelMaio.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelMaio.forEach(function(modelMaio) { %>'
+					dadosMeses.push(parseFloat('<%= modelMaio.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelJunho.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelJunho.forEach(function(modelJunho) { %>'
+					dadosMeses.push(parseFloat('<%= modelJunho.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelJulho.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelJulho.forEach(function(modelJulho) { %>'
+					dadosMeses.push(parseFloat('<%= modelJulho.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelAgosto.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelAgosto.forEach(function(modelAgosto) { %>'
+					dadosMeses.push(parseFloat('<%= modelAgosto.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelSetembro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelSetembro.forEach(function(modelSetembro) { %>'
+					dadosMeses.push(parseFloat('<%= modelSetembro.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelOutubro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelOutubro.forEach(function(modelOutubro) { %>'
+					dadosMeses.push(parseFloat('<%= modelOutubro.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelNovembro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelNovembro.forEach(function(modelNovembro) { %>'
+					dadosMeses.push(parseFloat('<%= modelNovembro.sum %>'))
+				'<% }) %>'	
+			}
+
+			if ('<%= modelDezembro.length %>' == 0){
+				dadosMeses.push(0)
+			} else {
+				'<% modelDezembro.forEach(function(modelDezembro) { %>'
+					dadosMeses.push(parseFloat('<%= modelDezembro.sum %>'))
+				'<% }) %>'	
+			}
+
 			new Chart('myChart', {
 				type: 'line',
 				data: {
@@ -434,20 +520,9 @@
 					],
 					datasets: [
 						{
-							label: 'Earnings',
+							label: 'Ganhos',
 							fill: true,
-							data: [
-								'0',
-								'10000',
-								'5000',
-								'15000',
-								'10000',
-								'20000',
-								'15000',
-								'25000',
-								'3000',
-								'300',
-							],
+							data: dadosMeses,
 							backgroundColor: 'rgba(78, 115, 223, 0.05)',
 							borderColor: 'rgba(78, 115, 223, 1)',
 						},
@@ -503,17 +578,25 @@
 					},
 				},
 			})
+			
+			let destinos = []
+			let valoresDestinos = []
+
+			'<% modelPizza.forEach(function(modelPizza) { %>'
+				destinos.push('<%= modelPizza.nome_destino %>')
+				valoresDestinos.push('<%= modelPizza.qtd %>')
+			'<% }) %>'
 
 			new Chart('myChart2', {
 				type: 'doughnut',
 				data: {
-					labels: ['Direct', 'Social', 'Referral'],
+					labels: destinos,
 					datasets: [
 						{
 							label: '',
 							backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
 							borderColor: ['#ffffff', '#ffffff', '#ffffff'],
-							data: ['50', '30', '15'],
+							data: valoresDestinos,
 						},
 					],
 				},
