@@ -3,24 +3,21 @@ const db = require('../database')
 // ==> Método responsável por criar um novo Destino:
 
 exports.createDestino = async (req, res) => {
-    const { nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao } = req.body;
+    const { nome_destino, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao } = req.body;
+    const { id_empresa } = req.user;
     const { rows } = await db.query(
         "INSERT INTO destino (nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao) VALUES ($1, $2, $3, $4, $5)",
         [nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao]
     );
 
-    res.status(201).send({
-        message: "Destino cadastrado com sucesso!", 
-        body: {
-            destino: {nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao}
-        },
-    });
+    res.status(201).redirect('/destinos')
 };
 
 // ==> Método responsável por listar todos os Destinos':
 
 exports.listAllDestinos = async (req, res) => {
-    const response = await db.query('SELECT * FROM destino ORDER BY nome_destino ASC');
+    const { id_empresa } = req.user;
+    const response = await db.query('SELECT * FROM destino WHERE id_empresa = $1 ORDER BY nome_destino ASC', [id_empresa]);
     res.render('destinos.ejs', { model: response.rows })
 };
 

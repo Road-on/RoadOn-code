@@ -11,9 +11,11 @@ let moment = require('moment');
 moment.locale('pt-br')
 
 const turistaController = require('../controllers/turista.controller')
+
 // ==> Renderização de rota:
 router.get('/registrar-turista', async (req, res) => {
-	const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino ORDER BY agenda_excursao.data_saida_excursao ASC');
+	const { id_empresa } = req.user; 
+	const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_empresa = $1 ORDER BY agenda_excursao.data_saida_excursao ASC ', [id_empresa]);
 	res.render('registrar-turista.ejs', { model: response.rows, moment: moment })
 })
 

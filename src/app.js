@@ -19,8 +19,8 @@ app.use(passport.session());
 
 
 // Função Middleware de validação
-// function authenticationMiddleware(req, res, next) {
-//   if (req.isAuthenticated()) return next();
+//  function authenticationMiddleware(req, res, next) {
+//    if (req.isAuthenticated()) return next();
 //   res.redirect('/login?fail=false');
 // }
 
@@ -52,10 +52,10 @@ app.use(cors());
 
 
 
-// function authenticationMiddleware(req, res, next) {
-//   if (req.isAuthenticated()) return next();
-//  res.redirect('/login?fail=true');
-// }
+function authenticationMiddleware(req, res, next) {
+  if (req.isAuthenticated()) return next();
+ res.redirect('/login?fail=true');
+}
 
 
 // fim da magica 
