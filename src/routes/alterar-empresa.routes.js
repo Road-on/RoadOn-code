@@ -9,9 +9,12 @@
 
  const empresaController = require('../controllers/empresa.controller')
  
+ const db = require('../database')
+
  // ==> Renderização de rota:
- router.get('/alterar-empresa', (req, res) => {
-     res.render('alterar-empresa.ejs')
+ router.get('/alterar-empresa', async (req, res) => {
+    const response = await db.query('SELECT * FROM empresa WHERE id_empresa = 1')	
+     res.render('alterar-empresa.ejs', { model: response.rows })
  })
 
 // ==> Rota responsável por selecionar Empresa pelo 'Id': (GET): localhost:3000/api/empresas/:id

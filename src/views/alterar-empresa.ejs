@@ -21,6 +21,8 @@
 			class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark"
 			id="mainNav"
 		>
+		
+		
 			<div class="container">
 				<a class="navbar-brand" href="index">Road.On</a>
 				<button
@@ -135,10 +137,12 @@
 								Dados
 							</h5>
 						</div>
+						<% model.forEach(function(model) { %>
 						<div class="mb-3">
 							<input
 								class="form-control"
 								type="text"
+								value="<%= model.nome_empresa %>"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o nome da empresa"
 							/>
@@ -147,6 +151,7 @@
 							<input
 								class="form-control"
 								type="text"
+								value="<%= model.cnpj_empresa %>"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o CNPJ da empresa"
 								disabled
@@ -156,6 +161,7 @@
 							<input
 								class="form-control"
 								type="tel"
+								value="<%= model.telefone_empresa %>"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o telefone da empresa"
 							/>
@@ -163,6 +169,7 @@
 								class="form-control"
 								type="email"
 								name="email"
+								value="<%= model.email_empresa %>"
 								placeholder="Digite o email de cadastro"
 								style="border-radius: 15px"
 							/>
@@ -217,6 +224,7 @@
 						</div>
 					</form>
 				</div>
+				<% }) %>
 			</section>
 		</div>
 		<%- include('footer') %>

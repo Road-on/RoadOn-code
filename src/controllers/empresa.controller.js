@@ -16,8 +16,9 @@ exports.createEmpresa = async (req, res) => {
 // ==> Método responsável por listar todos as Empresas':
 
 exports.listAllEmpresas = async (req, res) => {
-  const response = await db.query('SELECT * FROM empresa ORDER BY nome_empresa ASC');
-  res.status(200).send(response.rows);
+  const { id_empresa } = req.user;
+  const response = await db.query('SELECT * FROM empresa WHERE id_empresa = $1', [id_empresa]);
+  res.status(200).render('alterar_empresa.ejs', { model: response.rows, moment: moment });
 };
 
 // ==> Método responsável por selecionar Empresa pelo 'Id':
