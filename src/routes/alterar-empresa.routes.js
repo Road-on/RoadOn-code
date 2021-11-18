@@ -11,17 +11,12 @@
  
  const db = require('../database')
 
- // ==> Renderização de rota:
- router.get('/alterar-empresa', async (req, res) => {
-    const response = await db.query('SELECT * FROM empresa WHERE id_empresa = 1')	
-     res.render('alterar-empresa.ejs', { model: response.rows })
- })
 
 // ==> Rota responsável por selecionar Empresa pelo 'Id': (GET): localhost:3000/api/empresas/:id
-router.get('/registrar-empresa:id', empresaController.findEmpresaById)
+router.get('/alterar-empresa', empresaController.findEmpresaById)
  
 // ==> Rota responsável por atualizar Empresa pelo 'Id': (PUT): localhost: 3000/api/empresas/:id
-router.put('/alterar-empresa:id', empresaController.updateEmpresaById)
+router.post('/alterar-empresa', empresaController.updateEmpresaById)
 
 // ==> Rota responsável por excluir Empresa pelo 'Id': (DELETE): localhost:3000/api/empresas/:id
 router.delete('/alterar-empresa:id', empresaController.deleteEmpresaById)

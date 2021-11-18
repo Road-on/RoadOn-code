@@ -16,6 +16,6 @@ router.get('/agendados', agendarController.listAllAgendamentos)
 router.get('/consulta-agendamento', agendarController.findAgendamentoById)
 
 // ==> Rota responsável por excluir Agendamento pelo 'Id': (DELETE): localhost:3000/api/agendar/:id
-router.get('/agendados/cancelar/:id', agendarController.deleteAgendamentoById)
+router.get('/cancelar-agendamento', agendarController.deleteAgendamentoById)
 
 module.exports = router;

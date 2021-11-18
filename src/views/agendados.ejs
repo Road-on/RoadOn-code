@@ -55,14 +55,13 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								href="registrar-turista"								
+								href="registrar-turista"
+								style="margin-right: 28px"								
 							>
 								incluir turistas
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" style="margin-right: 28px" href="alterar-empresa">Editar Empresa</a>
-						</li>
+						
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -290,7 +289,7 @@
 											class="btn btn-danger"
 											type="button"
 											style="color: rgb(0, 0, 0)"
-											onclick="window.location.href = '/agendados/cancelar/<%= model.id_excursao %>'"
+											onclick="window.location.href = '/cancelar-agendamento?excursao=<%= model.id_excursao %>'"
 										>
 											Cancelar
 										</button>

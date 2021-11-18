@@ -1,51 +1,265 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+		/>
+		<title>Home - Brand</title>
+		<%- include('head') %>
+	</head>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - Brand</title>
-   <%- include('head') %>
-</head>
+	<body
+		id="page-top"
+		data-bs-spy="scroll"
+		data-bs-target="#mainNav"
+		data-bs-offset="54"
+		style="background: rgb(47, 54, 58)"
+	>
+		<nav
+			class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark"
+			id="mainNav"
+		>
+			<div class="container">
+				<a class="navbar-brand" href="/">Road.On</a>
+				<button
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarResponsive"
+					class="navbar-toggler navbar-toggler-right"
+					type="button"
+					aria-controls="navbarResponsive"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<i class="fa fa-bars"></i>
+				</button>
+				<div
+					class="collapse navbar-collapse"
+					id="navbarResponsive"
+					style="padding-right: 12px"
+				>
+					<ul class="navbar-nav ms-auto text-uppercase">
+						<li class="nav-item"></li>
+						<li class="nav-item"></li>
+						<li class="nav-item"></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="container">
+			<section
+				class="register-photo"
+				style="
+					background: rgb(47, 54, 58);
+					margin-bottom: 5px;
+					margin-top: 30px;
+					padding-bottom: 50px;
+				"
+			>
+				<h1
+					class="text-capitalize"
+					style="
+						text-align: center;
+						padding: 40px;
+						color: rgb(254, 209, 54);
+						padding-top: 55px;
+						margin-bottom: -35px;
+						font-family: 'Kaushan Script', serif;
+					"
+				>
+					Cadastre sua empresa
+				</h1>
+				<div
+					class="form-container"
+					style="
+						border-radius: 30px;
+						box-shadow: 3px 6px 20px rgba(0, 0, 0, 0.4);
+						background: #343a40;
+						padding: 40px;
+						margin-top: 60px;
+						margin-bottom: 10px;
+					"
+				>
+					<div
+						class="image-holder"
+						style="
+							border-radius: 30px;
+							background: url('assets/img/nrd-c3tNiAb098I-unsplash.jpg') center /
+								cover;
+						"
+					></div>
+					<form
+						method="post"
+						style="
+							border-radius: 30px;
+							background: rgb(52, 58, 64);
+							width: 515px;
+							padding: 105px 60px;
+							padding-left: 65px;
+							padding-right: 10px;
+							padding-top: 40px;
+						"
+					>
+						<div class="mb-3">
+							<h5
+								style="
+									color: rgb(254, 209, 54);
+									text-align: center;
+									margin-bottom: 18px;
+								"
+							>
+								Dados
+							</h5>
+						</div>
+						<div class="mb-3">
+							<input
+								name="nome_empresa"
+								class="form-control"
+								type="text"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite o nome da empresa"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								name="cnpj_empresa"
+								class="form-control"
+								type="text"
+								onblur="if(!validarCNPJ(this.value)){alert('CNPJ Informado é inválido'); this.value='';}"
+								maxlength="18"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite o CNPJ da empresa"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								name="telefone_empresa"
+								class="form-control"
+								type="tel"
+								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								placeholder="Digite o telefone da empresa"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								name="email_empresa"
+								class="form-control"
+								type="email"
+								placeholder="Digite o email de cadastro"
+								style="border-radius: 15px"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								id="senha_empresa"
+								name="senha_empresa"
+								class="form-control"
+								type="password"
+								placeholder="Digite uma senha"
+								style="border-radius: 15px"
+							/>
+						</div>
+						<div class="mb-3">
+							<input
+								id="senha-repeat"
+								name="senha-repeat"
+								class="form-control"
+								type="password"
+								placeholder="Repita a senha"
+								style="border-radius: 15px"
+							/>
+						</div>
+						<a href="/login">Já possui cadastro? Clique aqui!</a>
+						<div class="mb-3">
+							<button
+								name="btn-cadastrar"
+								class="btn btn-primary d-block w-100"
+								type="submit"
+								onClick="return validaSenha();"
+								style="
+									background: rgb(254, 209, 54);
+									color: rgb(0, 0, 0);
+									border-radius: 15px;
+									padding-bottom: 14px;
+								"
+							>
+								Cadastrar!
+							</button>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+		<%- include('footer') %>
+		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+		<script src="assets/js/bs-init.js"></script>
+		<script src="assets/js/-Filterable-Cards-.js"></script>
+		<script src="assets/js/agency.js"></script>
+		<script src="assets/js/Dashboard.js"></script>
 
-<body id="page-top" data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="54" style="background: rgb(47,54,58);">
-    <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark" id="mainNav">
-        <div class="container"><a class="navbar-brand" href="/">Road.On</a><button data-bs-toggle="collapse" data-bs-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right" type="button" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
-            <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-right: 12px;">
-                <ul class="navbar-nav ms-auto text-uppercase">
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                    <li class="nav-item"></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <section class="register-photo" style="background: rgb(47,54,58);margin-bottom: 5px;margin-top: 30px;padding-bottom: 50px;">
-            <h1 class="text-capitalize" style="text-align: center;padding: 40px;color: rgb(254,209,54);padding-top: 55px;margin-bottom: -35px;font-family: 'Kaushan Script', serif;">Cadastre sua empresa</h1>
-            <div class="form-container" style="border-radius: 30px;box-shadow: 3px 6px 20px rgba(0,0,0,0.4);background: #343a40;padding: 40px;margin-top: 60px;margin-bottom: 10px;">
-                <div class="image-holder" style="border-radius: 30px;background: url(&quot;assets/img/nrd-c3tNiAb098I-unsplash.jpg&quot;) center / cover;"></div>
-                <form method="post" style="border-radius: 30px;background: rgb(52,58,64);width: 515px;padding: 105px 60px;padding-left: 65px;padding-right: 10px;padding-top: 40px;">
-                    <div class="mb-3">
-                        <h5 style="color: rgb(254,209,54);text-align: center;margin-bottom: 18px;">Dados</h5>
-                    </div>
-                    <div class="mb-3"><input name="nome_empresa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome da empresa"></div>
-                    <div class="mb-3"><input name="cnpj_empresa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o CNPJ da empresa"></div>
-                    <div class="mb-3"><input name="telefone_empresa" class="form-control" type="tel" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone da empresa"></div>
-                    <div class="mb-3"><input name ="email_empresa" class="form-control" type="email" placeholder="Digite o email de cadastro" style="border-radius: 15px;"></div>
-                    <div class="mb-3"><input name="senha_empresa" class="form-control" type="password"  placeholder="Digite uma senha" style="border-radius: 15px;"></div>
-                    <div class="mb-3"><input name= "senha-repeat" class="form-control" type="password" placeholder="Repita a senha" style="border-radius: 15px;"></div><a href="/login">Já possui cadastro? Clique aqui!</a>
-                    <div class="mb-3"><button name="btn-cadastrar" class="btn btn-primary d-block w-100" type="submit" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Cadastrar!</button></div>
-                </form>
-            </div>
-        </section>
-    </div>
-    <%- include('footer') %>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-init.js"></script>
-    <script src="assets/js/-Filterable-Cards-.js"></script>
-    <script src="assets/js/agency.js"></script>
-    <script src="assets/js/Dashboard.js"></script>
-</body>
+		<script>
+			
+			function validaSenha() {
+                senha = document.getElementById('senha_empresa').value
+			    repeteSenha = document.getElementById('senha-repeat').value
 
+				if (senha == repeteSenha) {
+					return true
+				} else {
+					alert('Senhas não coincidem')
+					return false
+				}
+			}
+
+			function validarCNPJ(cnpj) {
+				cnpj = cnpj.replace(/[^\d]+/g, '')
+
+				if (cnpj == '') return false
+
+				if (cnpj.length != 14) return false
+
+				// Elimina CNPJs invalidos conhecidos
+				if (
+					cnpj == '00000000000000' ||
+					cnpj == '11111111111111' ||
+					cnpj == '22222222222222' ||
+					cnpj == '33333333333333' ||
+					cnpj == '44444444444444' ||
+					cnpj == '55555555555555' ||
+					cnpj == '66666666666666' ||
+					cnpj == '77777777777777' ||
+					cnpj == '88888888888888' ||
+					cnpj == '99999999999999'
+				)
+					return false
+
+				// Valida DVs
+				tamanho = cnpj.length - 2
+				numeros = cnpj.substring(0, tamanho)
+				digitos = cnpj.substring(tamanho)
+				soma = 0
+				pos = tamanho - 7
+				for (i = tamanho; i >= 1; i--) {
+					soma += numeros.charAt(tamanho - i) * pos--
+					if (pos < 2) pos = 9
+				}
+				resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+				if (resultado != digitos.charAt(0)) return false
+
+				tamanho = tamanho + 1
+				numeros = cnpj.substring(0, tamanho)
+				soma = 0
+				pos = tamanho - 7
+				for (i = tamanho; i >= 1; i--) {
+					soma += numeros.charAt(tamanho - i) * pos--
+					if (pos < 2) pos = 9
+				}
+				resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+				if (resultado != digitos.charAt(1)) return false
+
+				return true
+			}
+		</script>
+	</body>
 </html>

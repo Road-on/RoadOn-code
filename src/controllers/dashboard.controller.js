@@ -6,6 +6,7 @@ exports.populaDados = async (req, res) => {
     const realizados = await db.query('SELECT COUNT(id_excursao) as agendamentos FROM Agenda_Excursao WHERE data_saida_excursao < CURRENT_DATE AND id_empresa = $1', [id_empresa]);
     const lucroAnual = await db.query('SELECT TRUNC(SUM(destino.valor_excursao/12), 2) AS qtd FROM destino JOIN agenda_excursao ON agenda_excursao.id_destino = destino.id_destino WHERE agenda_excursao.id_empresa  = $1', [id_empresa])
     const lucroViagem = await db.query('SELECT TRUNC(SUM(destino.valor_excursao / (SELECT COUNT(id_excursao) FROM Agenda_Excursao)), 2) AS qtd FROM destino JOIN agenda_excursao ON agenda_excursao.id_destino = destino.id_destino WHERE agenda_excursao.id_empresa  = $1', [id_empresa])
+    const dadosEmpresa = await db.query('SELECT * FROM empresa WHERE id_empresa = $1', [id_empresa]);
 
     // ==> Dados Gráficos
     const dadosJaneiro = await db.query('SELECT SUM(destino.valor_excursao), EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) as mes FROM destino JOIN agenda_excursao on agenda_excursao.id_destino = destino.id_destino WHERE EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) = 1 AND agenda_excursao.id_empresa = $1 GROUP BY mes', [id_empresa])
@@ -41,6 +42,7 @@ exports.populaDados = async (req, res) => {
             modelNovembro: dadosNovembro.rows,
             modelDezembro: dadosDezembro.rows,
             modelPizza: dadosPizza.rows,
+            modelEmpresa: dadosEmpresa.rows
         }
     )
 }

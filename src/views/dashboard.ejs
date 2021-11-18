@@ -55,14 +55,13 @@
 						<li class="nav-item">
 							<a
 								class="nav-link"
-								href="registrar-turista"								
+								href="registrar-turista"
+								style="margin-right: 28px"								
 							>
 								incluir turistas
 							</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link" style="margin-right: 28px" href="alterar-empresa">Editar Empresa</a>
-						</li>
+						
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -340,27 +339,27 @@
 														margin-bottom: 35px;
 													"
 												>
+												<% modelEmpresa.forEach(function(modelEmpresa) { %>
 													<div class="container">
 														<div class="row">
 															<div class="col-md-8">
 																<div class="intro">
 																	<h2 style="color: rgb(254, 209, 54)">
-																		Cadastrar um novo destino
+																		Edite sua empresa
 																	</h2>
 																	<p>
-																		Cadastre novos destinos e ofereça ainda mais opções de diversão
-																		e comodidade para seus clientes!
+																		Edite seus dados, como nome de empresa, email ou senha!
 																	</p>
 																	<a
 																		class="btn btn-primary"
 																		role="button"
-																		href="registrar-destino"
+																		href="alterar-empresa?empresa=<%= modelEmpresa.id_empresa %>"
 																		style="
 																			background: rgb(254, 209, 54);
 																			color: rgb(0, 0, 0);
 																		"
 																	>
-																		&nbsp;cadastrar destino
+																		&nbsp;Edite a empresa
 																	</a>
 																</div>
 															</div>
@@ -370,7 +369,7 @@
 																		class="device"
 																		src="assets/img/phone.svg"
 																		style="
-																			background: url('assets/img/header-bg-4.jpg')
+																			background: url('assets/img/scott-graham-OQMZwNd3ThU-unsplash.jpg')
 																				center / cover;
 																			border-radius: 37px;
 																			width: 260px;
@@ -381,6 +380,7 @@
 															</div>
 														</div>
 													</div>
+													<% }) %>
 												</section>
 											</div>
 										</div>
