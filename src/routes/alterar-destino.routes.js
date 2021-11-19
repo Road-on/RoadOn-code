@@ -13,10 +13,7 @@
 // ==> Rota responsável por selecionar Destino pelo 'Id': (GET): localhost:3000/api/destinos/:id
 router.get('/alterar-destino', destinoController.findDestinoById)
 
- // ==> Rota responsável por atualizar Destino pelo 'Id': (PUT): localhost: 3000/api/alterar-destino/:id
 router.post('/alterar-destino', destinoController.updateDestinoById)
 
-// ==> Rota responsável por excluir Destino pelo 'Id': (DELETE): localhost:3000/api/alterar-destino/:id
-router.delete('/alterar-destino/:id', destinoController.deleteDestinoById)
-
+router.get('/excluir-destino', destinoController.deleteDestinoById)
 module.exports = router

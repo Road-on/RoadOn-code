@@ -128,6 +128,7 @@
 							padding-top: 40px;
 						"
 					>
+					<% model.forEach(function(model) { %>
 						<div class="mb-3">
 							<h5
 								style="
@@ -142,6 +143,8 @@
 						<div class="mb-3">
 							<input
 								class="form-control"
+								name="nome_pessoa"
+								value="<%= model.nome_pessoa %>"
 								type="text"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o nome do passageiro"
@@ -150,6 +153,8 @@
 						<div class="mb-3">
 							<input
 								class="form-control"
+								name="email_pessoa"
+								value="<%= model.email_pessoa %>"
 								type="email"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o E-mail do passageiro"
@@ -158,6 +163,8 @@
 						<div class="mb-3">
 							<input
 								class="form-control"
+								name="telefone_pessoa"
+								value="<%= model.telefone_pessoa %>"
 								type="tel"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o telefone do passageiro"
@@ -165,13 +172,12 @@
 							<div>
 								<select
 									class="form-select"
-									style="border-radius: 15px; height: 40px"
+									name="destinos"
+									style="border-radius: 15px; height: 40px; width: auto;"
 									disabled
 								>
-									<optgroup label="This is a group">
-										<option value="12" selected="">This is item 1</option>
-										<option value="13">This is item 2</option>
-										<option value="14">This is item 3</option>
+									<optgroup label="Destinos">
+										<option name="id_excursao" value="<%= model.id_excursao%>"><%= model.nome_destino%> - <%= moment(model.data_saida_excursao).format('lll') %> ~ <%= moment(model.data_volta_excursao).format('lll') %></option>
 									</optgroup>
 								</select>
 							</div>
@@ -238,6 +244,7 @@
 							class="btn btn-danger"
 							type="button"
 							style="color: rgb(0, 0, 0)"
+							onclick="window.location.href = 'remover-turista?turista=<%=model.id_pessoa%> '"
 						>
 							Excluir
 						</button>
@@ -253,6 +260,7 @@
 				</div>
 			</div>
 		</div>
+		<% }) %>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/bs-init.js"></script>
 		<script src="assets/js/-Filterable-Cards-.js"></script>

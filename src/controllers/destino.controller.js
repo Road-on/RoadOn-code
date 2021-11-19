@@ -38,7 +38,7 @@ exports.updateDestinoById = async (req, res) => {
 }
 
 exports.deleteDestinoById = async (req, res) => {
-    id_destino = parseInt(req.params.id);
+    id_destino = parseInt(req.query.destino);
     const response = await db.query('DELETE FROM destino WHERE id_destino = $1', [id_destino]);
     res.status(200).redirect('/destinos')
 }

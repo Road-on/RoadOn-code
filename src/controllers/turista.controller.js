@@ -1,4 +1,6 @@
 const db = require('../database')
+let moment = require('moment')
+moment.locale('pt-br')
 
 // ==> Método responsável por criar uma pessoa no banco de dados:
 
@@ -21,28 +23,30 @@ exports.createPessoa = async (req, res) => {
 // ==> Método responsável por listar todas as Pessoas':
 
 exports.listAllPessoas = async (req, res) => {
-    const response = await db.query('SELECT * FROM pessoa ORDER BY id_pessoa  ASC');
-    res.status(200).send(response.rows);
+    id_excursao  = parseInt(req.query.excursao);
+    const response = await db.query('SELECT * FROM pessoa_excursao INNER JOIN agenda_excursao ON pessoa_excursao.id_excursao = agenda_excursao.id_excursao INNER JOIN pessoa ON pessoa.id_pessoa = pessoa_excursao.id_pessoa WHERE agenda_excursao.id_excursao = $1', [id_excursao]);
+    res.status(200).render('turistas.ejs', {model: response.rows})
 };
 
 exports.findPessoaById = async (req, res) => {
     id_excursao  = parseInt(req.query.excursao);
-    const response = await db.query('SELECT * FROM pessoa_excursao INNER JOIN agenda_excursao ON pessoa_excursao.id_excursao = agenda_excursao.id_excursao INNER JOIN pessoa ON pessoa.id_pessoa = pessoa_excursao.id_pessoa WHERE agenda_excursao.id_excursao = $1', [id_excursao]);
-    res.status(200).render('turistas.ejs', {model: response.rows})
+    id_turista  = parseInt(req.query.turista);
+    const response = await db.query('SELECT * FROM pessoa_excursao INNER JOIN agenda_excursao ON pessoa_excursao.id_excursao = agenda_excursao.id_excursao INNER JOIN pessoa ON pessoa.id_pessoa = pessoa_excursao.id_pessoa INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_excursao = $1 AND pessoa.id_pessoa = $2', [id_excursao, id_turista]);
+    res.status(200).render('editar-turista.ejs', {model: response.rows, moment: moment })
 }
 
-exports.updatePessoaoById = async (req, res) => {
-    id_pessoa = parseInt(req.params.id);
+exports.updatePessoaById = async (req, res) => {
+    id_turista  = parseInt(req.query.turista);
     const { nome_pessoa , telefone_pessoa , email_pessoa} = req.body;
     const { rows } = await db.query(
-        "UPDATE pessoa SET nome_pessoa = $1, telefone_pessoa = $2, email_pessoa = $3, WHERE id_pessoa  = $4",
-        [nome_pessoa , telefone_pessoa , email_pessoa , id_pessoa]
+        "UPDATE pessoa SET nome_pessoa = $1, telefone_pessoa = $2, email_pessoa = $3 WHERE id_pessoa  = $4",
+        [nome_pessoa , telefone_pessoa , email_pessoa , id_turista]
     );
-    res.status(200).send({ message: "Pessoa atualizada com sucesso!" });
+    res.status(200).redirect('/agendados');
 }
 
 exports.deletePessoaById = async (req, res) => {
-    id_pessoa = parseInt(req.params.id);
-    const response = await db.query('DELETE FROM pessoa WHERE id_pessoa = $1', [id_pessoa]);
-    res.status(200).send({ message: "Pessoa removida com sucesso!", id: id_excursao });
+    id_turista  = parseInt(req.query.turista);
+    const response = await db.query('DELETE FROM pessoa WHERE id_pessoa = $1', [id_turista]);
+    res.status(200).redirect('/agendados');
 }

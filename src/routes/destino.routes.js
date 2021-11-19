@@ -9,15 +9,6 @@ const router = require('express-promise-router')()
 
 const destinoController = require('../controllers/destino.controller')
 // ==> Renderização de rota:
-router.get('/destinos', destinoController.listAllDestinos )
-
-// ==> Rota responsável por criar uma nova Destino: (POST): localhost:3000/api/destinos
- router.post('/destinos', destinoController.createDestino)
-
-// ==> Rota responsável por selecionar Destino pelo 'Id': (GET): localhost:3000/api/destinos/:id
-router.get('/destinos/:id', destinoController.findDestinoById)
-
-router.get('/destinos/excluir/:id', destinoController.deleteDestinoById)
-
+router.get('/destinos', destinoController.listAllDestinos)
 
 module.exports = router
