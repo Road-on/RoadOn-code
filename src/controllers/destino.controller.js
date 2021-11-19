@@ -22,19 +22,19 @@ exports.listAllDestinos = async (req, res) => {
 };
 
 exports.findDestinoById = async (req, res) => {
-    id_destino = parseInt(req.params.id);
+    id_destino = parseInt(req.query.destino);
     const response = await db.query('SELECT * FROM destino WHERE id_destino = $1', [id_destino]);
-    res.status(200).send(response.rows);
+    res.status(200).render('alterar-destino.ejs', { model: response.rows });
 }
 
 exports.updateDestinoById = async (req, res) => {
-    id_destino = parseInt(req.params.id);
+    id_destino = parseInt(req.query.destino);
     const { nome_destino, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao } = req.body;
     const { rows } = await db.query(
         "UPDATE destino SET nome_destino = $1, valor_excursao = $2, minimo_passageiro_excursao = $3, maximo_passageiro_excursao = $4 WHERE id_destino = $5",
         [nome_destino, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao, id_destino]
     );
-    res.status(200).send({ message: "Destino atualizado com sucesso!" });
+    res.status(200).redirect('/destinos');
 }
 
 exports.deleteDestinoById = async (req, res) => {

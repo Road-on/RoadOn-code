@@ -9,15 +9,12 @@
 
  const destinoController = require('../controllers/destino.controller')
  // ==> Renderização de rota:
- router.get('/alterar-destino', (req, res) => {
-     res.render('alterar-destino.ejs')
- })
  
 // ==> Rota responsável por selecionar Destino pelo 'Id': (GET): localhost:3000/api/destinos/:id
-router.get('/destinos/:id', destinoController.findDestinoById)
+router.get('/alterar-destino', destinoController.findDestinoById)
 
  // ==> Rota responsável por atualizar Destino pelo 'Id': (PUT): localhost: 3000/api/alterar-destino/:id
-router.put('/alterar-destino/:id', destinoController.updateDestinoById)
+router.post('/alterar-destino', destinoController.updateDestinoById)
 
 // ==> Rota responsável por excluir Destino pelo 'Id': (DELETE): localhost:3000/api/alterar-destino/:id
 router.delete('/alterar-destino/:id', destinoController.deleteDestinoById)

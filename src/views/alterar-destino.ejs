@@ -53,15 +53,8 @@
 							<a class="nav-link" href="dashboard">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a
-								class="nav-link"
-								href="registrar-turista"	
-								style="margin-right: 28px"							
-							>
-								incluir turistas
-							</a>
-						</li>
-						
+							<a class="nav-link" href="registrar-turista" style="margin-right: 28px">incluir turistas</a>
+						</li>					
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -95,7 +88,7 @@
 						font-family: 'Kaushan Script', serif;
 					"
 				>
-					Alterar dados do destino
+					Altere seu destino
 				</h1>
 				<div
 					class="form-container"
@@ -129,6 +122,7 @@
 							padding-top: 40px;
 						"
 					>
+					<% model.forEach(function(model) { %>
 						<div class="mb-3">
 							<h5
 								style="
@@ -137,56 +131,44 @@
 									margin-bottom: 18px;
 								"
 							>
-								Dados do destino
+								Dados
 							</h5>
 						</div>
 						<div class="mb-3">
 							<input
+								value="<%= model.nome_destino %>"
 								class="form-control"
 								type="text"
+								name="nome_destino"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
-								placeholder="Digite a cidade de destino"
-								disabled
+								placeholder="Digite o destino da excursão"
 							/>
 						</div>
 						<div class="mb-3">
 							<input
+								value="<%= model.minimo_passageiro_excursao %>"
 								class="form-control"
 								type="number"
+								name="minimo_passageiro_excursao"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o número mínimo de passageiros"
 							/>
 						</div>
 						<div class="mb-3">
 							<input
+								value="<%= model.maximo_passageiro_excursao %>"
 								class="form-control"
 								type="number"
+								name="maximo_passageiro_excursao"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o limite de passageiros"
 							/>
 							<input
+								value="<%= model.valor_excursao %>"
 								class="form-control"
 								type="number"
-								name="email"
+								name="valor_excursao"
 								placeholder="Digite o valor por pessoa"
-								style="border-radius: 15px"
-							/>
-						</div>
-						<div class="mb-3">
-							<input
-								class="form-control"
-								type="date"
-								name="data-ini"
-								placeholder="Insira a data de inicio da excursão"
-								style="border-radius: 15px"
-							/>
-						</div>
-						<div class="mb-3">
-							<input
-								class="form-control"
-								type="date"
-								name="data-volta"
-								placeholder="Insira a data de término da excursão"
 								style="border-radius: 15px"
 							/>
 						</div>
@@ -203,6 +185,66 @@
 							>
 								Alterar!
 							</button>
+							<button
+								class="btn btn-danger d-block w-100"
+								type="button"
+								style="
+									color: rgb(0, 0, 0);
+									border-radius: 15px;
+									padding: 14px 12px 14px;
+									padding-bottom: 14px;
+									margin-top: 15px;
+								"
+								data-bs-toggle="modal"
+								data-bs-target="#modal-exclusao"
+							>
+								Excluir destino
+							</button>
+
+							<div class="modal fade" role="dialog" tabindex="-1" id="modal-exclusao">
+								<div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div
+											class="modal-header"
+											style="background: #2f363a; border-radius: -11px; padding: 25px"
+										>
+											<h4 class="modal-title" style="color: rgb(254, 209, 54)">
+												Confirmação
+											</h4>
+											<button
+												type="button"
+												class="btn-close"
+												data-bs-dismiss="modal"
+												aria-label="Close"
+											></button>
+										</div>
+										<div class="modal-body" style="background: #2f363a">
+											<h3 style="color: rgb(255, 255, 255)">
+												Tem certeza que deseja excluir este destino?
+											</h3>
+										</div>
+										<div class="modal-footer" style="background: #2f363a">
+											<button
+												class="btn btn-danger"
+												type="button"
+												style="color: rgb(0, 0, 0)"
+												onclick="window.location.href = '/destinos/excluir/<%= model.id_destino %>'"
+											>
+												Excluir
+											</button>
+											<button
+												class="btn btn-secondary"
+												type="button"
+												style="color: rgb(0, 0, 0)"
+												data-bs-dismiss="modal"
+											>
+												Sair
+											</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<% }) %>
 						</div>
 					</form>
 				</div>
