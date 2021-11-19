@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS Agenda_Excursao (
     id_excursao SERIAL NOT NULL PRIMARY KEY,
     id_destino SERIAL NOT NULL,
     id_empresa SERIAL NOT NULL,
-    ponto_encontro VARCHAR(500),
+    roteiro_excursao VARCHAR(500),
     data_saida_excursao TIMESTAMP NOT NULL,
     data_volta_excursao TIMESTAMP NOT NULL,
 
