@@ -225,54 +225,56 @@
 						</div>
 					</form>
 				</div>
+				<div class="modal fade" role="dialog" tabindex="-1" id="modal-exclusao">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div
+								class="modal-header"
+								style="background: #2f363a; border-radius: -11px; padding: 25px"
+							>
+								<h4 class="modal-title" style="color: rgb(254, 209, 54)">
+									Confirmação
+								</h4>
+								<button
+									type="button"
+									class="btn-close"
+									data-bs-dismiss="modal"
+									aria-label="Close"
+								></button>
+							</div>
+							<div class="modal-body" style="background: #2f363a">
+								<h4 style="color: rgb(255, 0, 0)">
+									Tem certeza que deseja excluir sua empresa?&nbsp;
+									<br />
+									Isso ocasionará na perca de todos os dados vinculados
+								</h4>
+							</div>
+							<div class="modal-footer" style="background: #2f363a">
+								<button
+									class="btn btn-danger"
+									type="button"
+									style="color: rgb(0, 0, 0)"
+									onclick="window.location.href = '/remover-empresa?empresa=<%=model.id_empresa%>'"
+								>
+									Excluir
+								</button>
+								<button
+									class="btn btn-secondary"
+									type="button"
+									style="color: rgb(0, 0, 0)"
+									data-bs-dismiss="modal"
+								>
+									Sair
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
 				<% }) %>
 			</section>
 		</div>
 		<%- include('footer') %>
-		<div class="modal fade" role="dialog" tabindex="-1" id="modal-exclusao">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div
-						class="modal-header"
-						style="background: #2f363a; border-radius: -11px; padding: 25px"
-					>
-						<h4 class="modal-title" style="color: rgb(254, 209, 54)">
-							Confirmação
-						</h4>
-						<button
-							type="button"
-							class="btn-close"
-							data-bs-dismiss="modal"
-							aria-label="Close"
-						></button>
-					</div>
-					<div class="modal-body" style="background: #2f363a">
-						<h4 style="color: rgb(255, 0, 0)">
-							Tem certeza que deseja excluir sua empresa?&nbsp;
-							<br />
-							Isso ocasionará na perca de todos os dados vinculados
-						</h4>
-					</div>
-					<div class="modal-footer" style="background: #2f363a">
-						<button
-							class="btn btn-danger"
-							type="button"
-							style="color: rgb(0, 0, 0)"
-						>
-							Excluir
-						</button>
-						<button
-							class="btn btn-secondary"
-							type="button"
-							style="color: rgb(0, 0, 0)"
-							data-bs-dismiss="modal"
-						>
-							Sair
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+		
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/bs-init.js"></script>
 		<script src="assets/js/-Filterable-Cards-.js"></script>

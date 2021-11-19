@@ -13,4 +13,6 @@ router.get('/alterar-empresa', empresaController.findEmpresaById)
 
 router.post('/alterar-empresa', empresaController.updateEmpresaById)
 
+router.get('/remover-empresa', empresaController.deleteEmpresaById)
+
 module.exports = router

@@ -44,9 +44,9 @@ exports.updateEmpresaById = async (req, res) => {
 // ==> Método responsável por excluir uma 'Empresa' pelo 'Id':
 
 exports.deleteEmpresaById = async (req, res) => {
-  const id_empresa = parseInt(req.params.id);
+  const id_empresa = parseInt(req.query.empresa);
   await db.query('DELETE FROM empresa WHERE id_empresa = $1', [
     id_empresa
   ]);
-  res.status(200).send({ message: 'Empresa deletada com sucesso!', id: id_empresa });
+  res.status(200).redirect('/logout');
 };
