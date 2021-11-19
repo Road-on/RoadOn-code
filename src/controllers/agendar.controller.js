@@ -42,7 +42,7 @@ exports.updateAgendamentoById = async (req, res) => {
 }
 
 exports.deleteAgendamentoById = async (req, res) => {
-    id_excursao = parseInt(req.params.id);
+    id_excursao = parseInt(req.query.excursao);
     const response = await db.query('DELETE FROM agenda_excursao WHERE id_excursao = $1', [id_excursao]);
     res.status(200).redirect('/agendados')
 }

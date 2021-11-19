@@ -236,6 +236,21 @@
 								Reagendar!
 							</button>
 							<button
+								class="btn btn-danger d-block w-100"
+								type="button"
+								style="
+									color: rgb(0, 0, 0);
+									border-radius: 15px;
+									padding: 14px 12px 14px;
+									padding-bottom: 14px;
+									margin-top: 15px;
+								"
+								data-bs-toggle="modal"
+								data-bs-target="#modal-cancelamento"
+							>
+								Cancelar agendamento
+							</button>
+							<button
 								class="btn btn-primary d-block w-100"
 								type="button"
 								onclick="window.location.href = '/agendados'"
@@ -249,11 +264,56 @@
 								Retornar
 							</button>
 						</div>
-						<% }) %>
 					</form>
 				</div>
 			</section>
 		</div>
+
+		
+		<div class="modal fade" role="dialog" tabindex="-1" id="modal-cancelamento" >
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div
+						class="modal-header"
+						style="background: #2f363a; border-radius: -11px; padding: 25px"
+					>
+						<h4 class="modal-title" style="color: rgb(254, 209, 54)">
+							Confirmação
+						</h4>
+						<button
+							type="button"
+							class="btn-close"
+							data-bs-dismiss="modal"
+							aria-label="Close"
+						></button>
+					</div>
+					<div class="modal-body" style="background: #2f363a">
+						<h3 style="color: rgb(255, 255, 255)">
+							Tem certeza que deseja cancelar a excursão?
+						</h3>
+					</div>
+					<div class="modal-footer" style="background: #2f363a">
+						<button
+							class="btn btn-danger"
+							type="button"
+							style="color: rgb(0, 0, 0)"
+							onclick="window.location.href = '/cancelar-agendamento?excursao=<%= model.id_excursao %>'"
+						>
+							Cancelar
+						</button>
+						<button
+							class="btn btn-secondary"
+							type="button"
+							style="color: rgb(0, 0, 0)"
+							data-bs-dismiss="modal"
+						>
+							Sair
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<% }) %>
 		<%- include('footer') %>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/bs-init.js"></script>
