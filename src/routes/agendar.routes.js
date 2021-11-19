@@ -11,13 +11,11 @@ const agendarController = require('../controllers/agendar.controller')
 
 const db = require('../database')
 
-// ==> Renderização de rota:
 router.get('/agendar', async (req, res) => {
 	const response = await db.query('SELECT * FROM destino WHERE id_destino = $1', [req.query.destino])	
 	res.render('agendar-destino.ejs', { model: response.rows })
 })
 
-// ==> Rota responsável por criar uma nova Agendamento: (POST): localhost:3000/api/agendar
 router.post('/agendar', agendarController.createAgendamento)
 
 module.exports = router

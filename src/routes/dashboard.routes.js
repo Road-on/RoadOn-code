@@ -5,10 +5,11 @@
  * Data: 30/09/2021
  * Author: Fabio Santos
  */
- const router = require('express-promise-router')()
- const dashboardController = require('../controllers/dashboard.controller')
 
-// ==> Renderização de rota:
+const router = require('express-promise-router')()
+
+const dashboardController = require('../controllers/dashboard.controller')
+
 router.get('/dashboard', dashboardController.populaDados)
 
 module.exports = router

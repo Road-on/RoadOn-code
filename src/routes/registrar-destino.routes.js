@@ -8,12 +8,11 @@
  const router = require('express-promise-router')()
 
  const destinoController = require('../controllers/destino.controller')
- // ==> Renderização de rota:
+
  router.get('/registrar-destino', (req, res) => {
      res.render('registrar-destino.ejs')
  })
- 
- // ==> Rota responsável por criar uma nova Destino: (POST): localhost:3000/api/destinos
+
  router.post('/registrar-destino', destinoController.createDestino)
 
  module.exports = router

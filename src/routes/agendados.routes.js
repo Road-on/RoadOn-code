@@ -5,17 +5,14 @@
  * Data: 25/10/2021
  * Author: Fabio Santos
  */
- const router = require('express-promise-router')()
+const router = require('express-promise-router')()
 
- const agendarController = require('../controllers/agendar.controller')
+const agendarController = require('../controllers/agendar.controller')
 
- // ==> Renderização de rota:
 router.get('/agendados', agendarController.listAllAgendamentos)
 
-// ==> Rota responsável por selecionar Agendamento pelo 'Id': (GET): localhost:3000/api/agendar/:id
 router.get('/consulta-agendamento', agendarController.findAgendamentoById)
 
-// ==> Rota responsável por excluir Agendamento pelo 'Id': (DELETE): localhost:3000/api/agendar/:id
 router.get('/cancelar-agendamento', agendarController.deleteAgendamentoById)
 
-module.exports = router;
+module.exports = router

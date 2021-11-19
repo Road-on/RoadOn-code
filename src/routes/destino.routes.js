@@ -8,7 +8,7 @@
 const router = require('express-promise-router')()
 
 const destinoController = require('../controllers/destino.controller')
-// ==> Renderização de rota:
+
 router.get('/destinos', destinoController.listAllDestinos)
 
 module.exports = router
