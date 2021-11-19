@@ -102,9 +102,6 @@
   outline: none !important;
 }
 
-.register-photo form .btn-primary:hover, .register-photo form .btn-primary:active {
-  /*background: #eb3b60;*/
-}
 
 .register-photo form .btn-primary:active {
   transform: translateY(1px);
@@ -199,34 +196,6 @@
 .highlight-phone .phone-mockup img.device {
   width: 100%;
   height: auto;
-}
-
-.highlight-phone .phone-mockup .screen {
-  position: absolute;
-  width: 94%;
-  height: 91%;
-  top: 1%;
-  left: 3%;
-  border: 1px solid #444;
-  border-radius: 20px;
-  background-color: #aaa;
-  overflow: hidden;
-  background: url(../../assets/img/screen-content-phone.jpg);
-  background-size: cover;
-  background-position: center;
-  z-index: -1;
-}
-
-.highlight-phone .phone-mockup .screen:before {
-  content: '';
-  background-color: #fff;
-  position: absolute;
-  width: 70%;
-  height: 140%;
-  top: -6%;
-  right: -60%;
-  transform: rotate(-19deg);
-  opacity: 0.2;
 }
 
 
