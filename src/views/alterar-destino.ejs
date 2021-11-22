@@ -228,7 +228,7 @@
 												class="btn btn-danger"
 												type="button"
 												style="color: rgb(0, 0, 0)"
-												onclick="window.location.href = '/excluir-destino?destino<%= model.id_destino %>'"
+												onclick="window.location.href = '/excluir-destino?destino=<%= model.id_destino %>'"
 											>
 												Excluir
 											</button>
@@ -256,5 +256,28 @@
 		<script src="assets/js/-Filterable-Cards-.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script src="assets/js/Dashboard.js"></script>
+
+		<script>
+			
+			'<% if(exists) { %>'
+			   Swal.fire({
+				icon: 'error',
+				title: 'Não foi possível realizar o cadastro',
+				text: 'O destino informado já existe na base de dados!',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+			'<%}%>'
+
+			'<% if(error) { %>'
+			   Swal.fire({
+				icon: 'error',
+				title: 'Erro no sistema',
+				text: 'Tente novamente! Caso o erro persista, consulte o administrador para mais informações!',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+			'<%}%>'
+
+		</script>
+
 	</body>
 </html>

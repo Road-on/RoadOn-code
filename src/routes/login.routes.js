@@ -5,13 +5,13 @@ const passport = require('passport');
 /* GET login page. */
 router.get('/login', (req, res, next) => {
     if (req.query.fail)
-        res.render('login.ejs', { fail: true, cadastro: false, logged: true, title: 'RoadOn - Login' });
-    else if (req.query.cadastro)
-        res.render('login.ejs', { fail: false, cadastro: true, logged: true, title: 'RoadOn - Login' });
+        res.render('login.ejs', { fail: true, success: false, logged: true, title: 'RoadOn - Login' });
+    else if (req.query.success)
+        res.render('login.ejs', { fail: false, success: true, logged: true, title: 'RoadOn - Login' });
     else if (req.query.logged)
-        res.render('login.ejs', { fail: false, cadastro: true, logged: false, title: 'RoadOn - Login' });
+        res.render('login.ejs', { fail: false, success: true, logged: false, title: 'RoadOn - Login' });
     else
-        res.render('login.ejs', { fail: false, cadastro: false, logged: true, title: 'RoadOn - Login' });
+        res.render('login.ejs', { fail: false, success: false, logged: true, title: 'RoadOn - Login' });
 });
 
 /* POST login page */

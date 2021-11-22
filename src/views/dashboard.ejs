@@ -614,6 +614,15 @@
 					},
 				},
 			})
+
+			'<% if(success) { %>'
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Empresa alterada com sucesso!',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
+			'<%}%>'
+
 		</script>
 	</body>
 </html>

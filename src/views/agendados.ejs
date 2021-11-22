@@ -250,5 +250,23 @@
 		<script src="assets/js/-Filterable-Cards-.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script src="assets/js/Dashboard.js"></script>
+
+		<script>
+			'<% if(success) { %>'
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Agendamento realizado com sucesso!',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
+			'<%}%>'
+
+			'<% if(deleted) { %>'
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Agendamento removido com sucesso!',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
+			'<%}%>'
+		</script>
 	</body>
 </html>

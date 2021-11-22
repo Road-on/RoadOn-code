@@ -18,7 +18,8 @@ CREATE TABLE IF NOT EXISTS Destino(
     minimo_passageiro_excursao INTEGER NOT NULL, 
     maximo_passageiro_excursao INTEGER NOT NULL, 
 	
-	CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE
+	CONSTRAINT fk_id_empresa FOREIGN KEY (id_empresa) REFERENCES Empresa(id_empresa) ON DELETE CASCADE,
+    CONSTRAINT uq_nome_destino UNIQUE (nome_destino)
 );
 
 CREATE TABLE IF NOT EXISTS Agenda_Excursao (

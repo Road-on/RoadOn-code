@@ -10,14 +10,12 @@ const router = require('express-promise-router')()
 const empresaController = require('../controllers/empresa.controller')
 
 router.get('/registrar-empresa', (req, res) => {
-	if (req.query.existe){
-		res.render('registrar-empresa.ejs', { cadastro: false, erro: false, title: 'RoadOn - Cadastro de Empresa'})
-	}
-	else if (req.query.erro) {
-		res.render('registrar-empresa.ejs', { cadastro: true, erro: true, title: 'RoadOn - Cadastro de Empresa'})
-	} else {
-		res.render('registrar-empresa.ejs', { cadastro: true, erro: false, title: 'RoadOn - Cadastro de Empresa'})
-	}
+	if (req.query.exists)
+		res.render('registrar-empresa.ejs', { exists: true, error: false, title: 'RoadOn - Cadastro de Empresa'})
+	else if (req.query.error)
+		res.render('registrar-empresa.ejs', { exists: false, error: true, title: 'RoadOn - Cadastro de Empresa'})
+	 else
+		res.render('registrar-empresa.ejs', { exists: false, error: false, title: 'RoadOn - Cadastro de Empresa'})
 })
 
 router.post('/registrar-empresa', empresaController.createEmpresa)

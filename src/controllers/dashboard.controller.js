@@ -22,8 +22,34 @@ exports.populaDados = async (req, res) => {
     const dadosNovembro = await db.query('SELECT SUM(destino.valor_excursao), EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) as mes FROM destino JOIN agenda_excursao on agenda_excursao.id_destino = destino.id_destino WHERE EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) = 11 AND agenda_excursao.id_empresa = $1  GROUP BY mes', [id_empresa])
     const dadosDezembro = await db.query('SELECT SUM(destino.valor_excursao), EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) as mes FROM destino JOIN agenda_excursao on agenda_excursao.id_destino = destino.id_destino WHERE EXTRACT(MONTH FROM agenda_excursao.data_saida_excursao) = 12 AND agenda_excursao.id_empresa = $1  GROUP BY mes', [id_empresa])
     const dadosPizza = await db.query('SELECT agenda_excursao.id_destino, destino.nome_destino,COUNT(*) As QTD FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino AND agenda_excursao.id_empresa = $1 GROUP BY agenda_excursao.id_destino, destino.nome_destino ORDER BY QTD DESC LIMIT 3', [id_empresa])
-
-    res.status(200).render('dashboard.ejs', 
+    if (req.query.success){
+        res.status(200).render('dashboard.ejs', 
+            {
+                modelPendentes: pendentes.rows, 
+                modelRealizados: realizados.rows, 
+                modelLucroAnual: lucroAnual.rows, 
+                modelLucroViagem: lucroViagem.rows,
+                modelJaneiro: dadosJaneiro.rows,
+                modelFevereiro: dadosFevereiro.rows,
+                modelMarco: dadosMarco.rows,
+                modelAbril: dadosAbril.rows,
+                modelMaio: dadosMaio.rows,
+                modelJunho: dadosJunho.rows,
+                modelJulho: dadosJulho.rows,
+                modelAgosto: dadosAgosto.rows,
+                modelSetembro: dadosSetembro.rows,
+                modelOutubro: dadosOutubro.rows,
+                modelNovembro: dadosNovembro.rows,
+                modelDezembro: dadosDezembro.rows,
+                modelPizza: dadosPizza.rows,
+                modelEmpresa: dadosEmpresa.rows,
+                title: 'RoadOn - Dashboard',
+                success: true
+            }
+        )
+    }
+    else {
+        res.status(200).render('dashboard.ejs', 
         {
             modelPendentes: pendentes.rows, 
             modelRealizados: realizados.rows, 
@@ -43,7 +69,10 @@ exports.populaDados = async (req, res) => {
             modelDezembro: dadosDezembro.rows,
             modelPizza: dadosPizza.rows,
             modelEmpresa: dadosEmpresa.rows,
-            title: 'RoadOn - Dashboard'
+            title: 'RoadOn - Dashboard',
+            success: false
         }
     )
+
+    }
 }

@@ -328,7 +328,7 @@
 				}
 			}
 
-			'<% if(!cadastro) { %>'
+			'<% if(exists) { %>'
 			   Swal.fire({
 				icon: 'error',
 				title: 'Não foi possível realizar o cadastro',
@@ -337,7 +337,7 @@
 				})
 			'<%}%>'
 
-			'<% if(erro) { %>'
+			'<% if(error) { %>'
 			   Swal.fire({
 				icon: 'error',
 				title: 'Erro no sistema',

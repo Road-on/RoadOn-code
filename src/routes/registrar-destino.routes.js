@@ -12,7 +12,13 @@
  const destinoController = require('../controllers/destino.controller')
 
  router.get('/registrar-destino', ensureLogin.ensureLoggedIn('/login?logged=false'), (req, res) => {
-     res.render('registrar-destino.ejs', { title: 'RoadOn - Cadastro de Destino' })
+    if (req.query.exists)
+        res.render('registrar-destino.ejs', { exists: true, error: false, title: 'RoadOn - Cadastro de Destino' })
+    else if (req.query.error) 
+        res.render('registrar-destino.ejs', { exists: false, error: true, title: 'RoadOn - Cadastro de Destino' })
+    else
+        res.render('registrar-destino.ejs', { exists: false, error: false, title: 'RoadOn - Cadastro de Destino' })
+  
  })
 
  router.post('/registrar-destino', destinoController.createDestino)
