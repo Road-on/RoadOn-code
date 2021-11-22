@@ -7,8 +7,10 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const destinoController = require('../controllers/destino.controller')
 
-router.get('/destinos', destinoController.listAllDestinos)
+router.get('/destinos', ensureLogin.ensureLoggedIn('/login?logged=false'), destinoController.listAllDestinos)
 
 module.exports = router

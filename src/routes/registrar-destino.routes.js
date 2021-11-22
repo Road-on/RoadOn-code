@@ -7,9 +7,11 @@
  */
  const router = require('express-promise-router')()
 
+ const ensureLogin = require("connect-ensure-login")
+
  const destinoController = require('../controllers/destino.controller')
 
- router.get('/registrar-destino', (req, res) => {
+ router.get('/registrar-destino', ensureLogin.ensureLoggedIn('/login?logged=false'), (req, res) => {
      res.render('registrar-destino.ejs', { title: 'RoadOn - Cadastro de Destino' })
  })
 

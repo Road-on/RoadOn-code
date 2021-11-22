@@ -7,11 +7,13 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const db = require('../database')
 
 const agendarController = require('../controllers/agendar.controller')
 
-router.get('/reagendar', async (req, res) => {
+router.get('/reagendar', ensureLogin.ensureLoggedIn('/login?logged=false'), async (req, res) => {
 	const {id_empresa} = req.user
 	id_excursao = parseInt(req.query.excursao)
 	const response = await db.query(
@@ -22,9 +24,5 @@ router.get('/reagendar', async (req, res) => {
 })
 
 router.post('/reagendar', agendarController.updateAgendamentoById)
-
-router.put('/reagendar/:id', agendarController.updateAgendamentoById)
-
-router.delete('/reagendar/:id', agendarController.deleteAgendamentoById)
 
 module.exports = router

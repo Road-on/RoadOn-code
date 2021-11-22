@@ -47,18 +47,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.json({ type: 'application/vnd.api+json' }));
 app.use(cors());
-// MAgica da sessao de login na mexer
+// // MAgica da sessao de login na mexer
 
 
 
 
-function authenticationMiddleware(req, res, next) {
-  if (req.isAuthenticated()) return next();
- res.redirect('/login?fail=true');
-}
+// function authenticationMiddleware(req, res, next) {
+//   if (req.isAuthenticated()) return next();
+//  res.redirect('/');
+// }
 
 
-// fim da magica 
+// // fim da magica 
 
 
 app.set('views','src/views') 
@@ -79,7 +79,6 @@ app.use('/api/', empresaRoute)
 // ==> Telas
 
 app.use(agendarRoute);
-//app.use(authenticationMiddleware, indexRouter)
 app.use(indexRouter)
 app.use(reagendarRoute);
 app.use(agendadosRoute);

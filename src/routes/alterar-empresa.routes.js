@@ -7,12 +7,14 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const empresaController = require('../controllers/empresa.controller')
 
-router.get('/alterar-empresa', empresaController.findEmpresaById)
+router.get('/alterar-empresa', ensureLogin.ensureLoggedIn('/login?logged=false'), empresaController.findEmpresaById)
 
 router.post('/alterar-empresa', empresaController.updateEmpresaById)
 
-router.get('/remover-empresa', empresaController.deleteEmpresaById)
+router.get('/remover-empresa', ensureLogin.ensureLoggedIn('/login?logged=false'), empresaController.deleteEmpresaById)
 
 module.exports = router

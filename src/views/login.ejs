@@ -170,6 +170,15 @@
                 })
 			   '<%}%>'
 
+			   '<% if(!logged) { %>'
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Você precisa estar logado para acessar essa tela! Faça login para desfrutar de nossos serviços',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
+			   '<%}%>'
+
                '<% if(fail) { %>'
                 Swal.fire({
                     icon: 'error',

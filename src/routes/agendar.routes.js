@@ -7,11 +7,13 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const agendarController = require('../controllers/agendar.controller')
 
 const db = require('../database')
 
-router.get('/agendar', async (req, res) => {
+router.get('/agendar', ensureLogin.ensureLoggedIn('/login?logged=false'), async (req, res) => {
 	const response = await db.query('SELECT * FROM destino WHERE id_destino = $1', [req.query.destino])	
 	res.render('agendar-destino.ejs', { model: response.rows, title: 'RoadOn - Agendar Excursão' })
 })

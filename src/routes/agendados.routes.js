@@ -7,12 +7,14 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const agendarController = require('../controllers/agendar.controller')
 
-router.get('/agendados', agendarController.listAllAgendamentos)
+router.get('/agendados', ensureLogin.ensureLoggedIn('/login?logged=false'), agendarController.listAllAgendamentos)
 
-router.get('/consulta-agendamento', agendarController.findAgendamentoById)
+router.get('/consulta-agendamento', ensureLogin.ensureLoggedIn('/login?logged=false'), agendarController.findAgendamentoById)
 
-router.get('/cancelar-agendamento', agendarController.deleteAgendamentoById)
+router.get('/cancelar-agendamento', ensureLogin.ensureLoggedIn('/login?logged=false'), agendarController.deleteAgendamentoById)
 
 module.exports = router

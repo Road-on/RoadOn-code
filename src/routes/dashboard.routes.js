@@ -8,8 +8,10 @@
 
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const dashboardController = require('../controllers/dashboard.controller')
 
-router.get('/dashboard', dashboardController.populaDados)
+router.get('/dashboard', ensureLogin.ensureLoggedIn('/login?logged=false'), dashboardController.populaDados)
 
 module.exports = router

@@ -7,12 +7,14 @@
  */
 const router = require('express-promise-router')()
 
+const ensureLogin = require("connect-ensure-login")
+
 const turistaController = require('../controllers/turista.controller')
 
-router.get('/editar-turista', turistaController.findPessoaById)
+router.get('/editar-turista', ensureLogin.ensureLoggedIn('/login?logged=false'), turistaController.findPessoaById)
 
 router.post('/editar-turista', turistaController.updatePessoaById)
 
-router.get('/remover-turista', turistaController.deletePessoaById)
+router.get('/remover-turista', ensureLogin.ensureLoggedIn('/login?logged=false'), turistaController.deletePessoaById)
 
 module.exports = router
