@@ -24,6 +24,6 @@ router.get('/registrar-turista', ensureLogin.ensureLoggedIn('/login?logged=false
 
 router.post('/registrar-turista', turistaController.createPessoa)
 
-router.get('/turistas', turistaController.listAllPessoas)
+router.get('/turistas', ensureLogin.ensureLoggedIn('/login?logged=false'), turistaController.listAllPessoas)
 
 module.exports = router
