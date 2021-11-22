@@ -115,6 +115,7 @@
 						<div class="mb-3">
 							<input
 								name="nome_empresa"
+								id="nome_empresa"
 								class="form-control"
 								type="text"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
@@ -124,6 +125,7 @@
 						<div class="mb-3">
 							<input
 								name="cnpj_empresa"
+								id="cnpj_empresa"
 								class="form-control"
 								type="text"
 								onblur="if(!validarCNPJ(this.value)){Swal.fire({
@@ -140,8 +142,15 @@
 						<div class="mb-3">
 							<input
 								name="telefone_empresa"
+								id="telefone_empresa"
 								class="form-control"
 								type="tel"
+								onblur="if(!validPhone(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'Celular Inválido!',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o telefone da empresa"
 							/>
@@ -149,6 +158,7 @@
 						<div class="mb-3">
 							<input
 								name="email_empresa"
+								id="email_empresa"
 								class="form-control"
 								type="email"
 								placeholder="Digite o email de cadastro"
@@ -160,6 +170,12 @@
 								id="senha_empresa"
 								name="senha_empresa"
 								class="form-control"
+								onblur="if(!validaTamanhoSenha(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'Senha deve conter no mínimo 8 dígitos.',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								type="password"
 								placeholder="Digite uma senha"
 								style="border-radius: 15px"
@@ -171,6 +187,12 @@
 								name="senha-repeat"
 								class="form-control"
 								type="password"
+								onblur="if(!validaSenha(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'As senhas não coincidem!',
+									confirmButtonColor: 'rgb(254, 209, 54)',
+								}); this.value='';}"
 								placeholder="Repita a senha"
 								style="border-radius: 15px"
 							/>
@@ -181,7 +203,7 @@
 								name="btn-cadastrar"
 								class="btn btn-primary d-block w-100"
 								type="submit"
-								onClick="return validaSenha();"
+								onClick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -204,21 +226,36 @@
 		<script src="assets/js/Dashboard.js"></script>
 
 		<script>
-			function validaSenha() {
+			function validaSenha(input) {
 				senha = document.getElementById('senha_empresa').value
-				repeteSenha = document.getElementById('senha-repeat').value
+				repeteSenha = input
 
 				if (senha == repeteSenha) {
 					return true
 				} else {
+					return false
+				}
+			}
+
+			function validaTamanhoSenha(senha){
+				if(senha.length < 8){
 					Swal.fire({
 						icon: 'warning',
 						title: 'Oops...',
-						text: 'As senhas não coincidem!',
+						text: 'Senha deve conter no mínimo 8 dígitos.',
 						confirmButtonColor: 'rgb(254, 209, 54)',
 					})
 					return false
+				} else {
+					return true
 				}
+			}
+
+			function validPhone(phone) {
+   				 if(phone.length < 11){
+						return false
+					}
+				return true;
 			}
 
 			function validarCNPJ(cnpj) {
@@ -270,6 +307,26 @@
 				return true
 			}
 
+			function validarCamposEmBranco(){
+				senha = document.getElementById('senha_empresa').value
+				repeteSenha = document.getElementById('senha-repeat').value
+				cnpj = document.getElementById('cnpj_empresa').value
+				telefone = document.getElementById('telefone_empresa').value
+				email = document.getElementById('email_empresa').value
+				nome = document.getElementById('nome_empresa').value
+
+				if(senha === "" || repeteSenha === "" || cnpj === "" || telefone === "" || email === "" || nome === ""){
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'Necessário preencher todos os campos em branco!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+				return false
+				} else {
+					return true
+				}
+			}
 
 			'<% if(!cadastro) { %>'
 			   Swal.fire({
