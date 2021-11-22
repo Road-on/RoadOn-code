@@ -13,7 +13,7 @@ exports.createEmpresa = async (req, res, next) => {
     res.status(201).redirect('/login?cadastro=true')    
   } 
   catch (error) {
-    switch (error?.code) {
+    switch (error.code) {
       case '23505':
         res.status(403).redirect('/registrar-empresa?existe=true')
           break;

@@ -151,24 +151,39 @@
 								class="form-control"
 								type="text"
 								value="<%= model.cnpj_empresa %>"
+								onblur="if(!validarCNPJ(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'CNPJ Inválido!',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o CNPJ da empresa"
 								name="cnpj_empresa"
+								id="cnpj_empresa"
 							/>
 						</div>
 						<div class="mb-3">
 							<input
 								class="form-control"
 								type="tel"
+								onblur="if(!validPhone(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'Celular Inválido!',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								value="<%= model.telefone_empresa %>"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o telefone da empresa"
 								name="telefone_empresa"
+								id="telefone_empresa"
 							/>
 							<input
 								class="form-control"
 								type="email"
 								name ="email_empresa"
+								id ="email_empresa"
 								value="<%= model.email_empresa %>"
 								placeholder="Digite o email de cadastro"
 								style="border-radius: 15px"
@@ -177,8 +192,15 @@
 						<div class="mb-3">
 							<input
 								class="form-control"
+								id="senha_empresa"
 								type="password"
 								name="senha_empresa"
+								onblur="if(!validaTamanhoSenha(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'Senha deve conter no mínimo 8 dígitos.',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								placeholder="Digite uma senha"
 								style="border-radius: 15px"
 							/>
@@ -187,7 +209,14 @@
 							<input
 								class="form-control"
 								type="password"
+								id="senha-repeat"
 								name="senha-repeat"
+								onblur="if(!validaSenha(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'As senhas não coincidem!',
+									confirmButtonColor: 'rgb(254, 209, 54)',
+								}); this.value='';}"
 								placeholder="Repita a senha"
 								style="border-radius: 15px"
 							/>
@@ -196,6 +225,7 @@
 							<button
 								class="btn btn-primary d-block w-100"
 								type="submit"
+								onClick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -280,5 +310,120 @@
 		<script src="assets/js/-Filterable-Cards-.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script src="assets/js/Dashboard.js"></script>
+
+		<script>
+			function validaSenha(input) {
+				senha = document.getElementById('senha_empresa').value
+				repeteSenha = input
+
+				if (senha == repeteSenha) {
+					return true
+				} else {
+					return false
+				}
+			}
+
+			function validaTamanhoSenha(senha){
+				if(senha.length < 8){
+					Swal.fire({
+						icon: 'warning',
+						title: 'Oops...',
+						text: 'Senha deve conter no mínimo 8 dígitos.',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+					})
+					return false
+				} else {
+					return true
+				}
+			}
+
+			function validPhone(phone) {
+   				 if(phone.length < 11){
+						return false
+					}
+				return true;
+			}
+
+			function validarCNPJ(cnpj) {
+				cnpj = cnpj.replace(/[^\d]+/g, '')
+
+				if (cnpj == '') return false
+
+				if (cnpj.length != 14) return false
+
+				// Elimina CNPJs invalidos conhecidos
+				if (
+					cnpj == '00000000000000' ||
+					cnpj == '11111111111111' ||
+					cnpj == '22222222222222' ||
+					cnpj == '33333333333333' ||
+					cnpj == '44444444444444' ||
+					cnpj == '55555555555555' ||
+					cnpj == '66666666666666' ||
+					cnpj == '77777777777777' ||
+					cnpj == '88888888888888' ||
+					cnpj == '99999999999999'
+				)
+					return false
+
+				// Valida DVs
+				tamanho = cnpj.length - 2
+				numeros = cnpj.substring(0, tamanho)
+				digitos = cnpj.substring(tamanho)
+				soma = 0
+				pos = tamanho - 7
+				for (i = tamanho; i >= 1; i--) {
+					soma += numeros.charAt(tamanho - i) * pos--
+					if (pos < 2) pos = 9
+				}
+				resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+				if (resultado != digitos.charAt(0)) return false
+
+				tamanho = tamanho + 1
+				numeros = cnpj.substring(0, tamanho)
+				soma = 0
+				pos = tamanho - 7
+				for (i = tamanho; i >= 1; i--) {
+					soma += numeros.charAt(tamanho - i) * pos--
+					if (pos < 2) pos = 9
+				}
+				resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11)
+				if (resultado != digitos.charAt(1)) return false
+
+				return true
+			}
+
+			function validarCamposEmBranco(){
+				senha = document.getElementById('senha_empresa').value
+				repeteSenha = document.getElementById('senha-repeat').value
+				cnpj = document.getElementById('cnpj_empresa').value
+				telefone = document.getElementById('telefone_empresa').value
+				email = document.getElementById('email_empresa').value
+
+				if(senha === "" || repeteSenha === "" || cnpj === "" || telefone === "" || email === ""){
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'Necessário preencher todos os campos em branco!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+				return false
+				} else {
+					return true
+				}
+			}
+
+
+			'<% if(!model) { %>'
+			   Swal.fire({
+				icon: 'error',
+				title: 'Não foi possível realizar o cadastro',
+				text: 'O CNPJ e/ou email informado(s) já existe na base de dados!',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+			'<%}%>'
+
+
+		</script>
 	</body>
 </html>
