@@ -4,7 +4,10 @@ CREATE TABLE IF NOT EXISTS Empresa(
     cnpj_empresa VARCHAR(50) NOT NULL, 
     telefone_empresa VARCHAR(20) NOT NULL,
     email_empresa VARCHAR(240) NOT NULL,
-    senha_empresa VARCHAR(250) NOT NULL
+    senha_empresa VARCHAR(250) NOT NULL,
+
+    CONSTRAINT uq_email_empresa UNIQUE (email_empresa),
+    CONSTRAINT uq_cnpj_empresa UNIQUE (cnpj_empresa)
 );
 
 CREATE TABLE IF NOT EXISTS Destino(
