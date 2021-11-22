@@ -42,7 +42,8 @@ exports.populaDados = async (req, res) => {
             modelNovembro: dadosNovembro.rows,
             modelDezembro: dadosDezembro.rows,
             modelPizza: dadosPizza.rows,
-            modelEmpresa: dadosEmpresa.rows
+            modelEmpresa: dadosEmpresa.rows,
+            title: 'RoadOn - Dashboard'
         }
     )
 }

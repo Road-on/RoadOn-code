@@ -8,7 +8,7 @@
  const router = require('express-promise-router')()
 
  router.get('/index', (req, res) => {
-    res.render('index-logado.ejs')
+    res.render('index-logado.ejs', { title: 'RoadOn'})
 })
 
 module.exports = router

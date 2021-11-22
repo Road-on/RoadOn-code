@@ -10,7 +10,7 @@
  const destinoController = require('../controllers/destino.controller')
 
  router.get('/registrar-destino', (req, res) => {
-     res.render('registrar-destino.ejs')
+     res.render('registrar-destino.ejs', { title: 'RoadOn - Cadastro de Destino' })
  })
 
  router.post('/registrar-destino', destinoController.createDestino)

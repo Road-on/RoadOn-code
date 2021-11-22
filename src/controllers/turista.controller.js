@@ -25,14 +25,14 @@ exports.createPessoa = async (req, res) => {
 exports.listAllPessoas = async (req, res) => {
     id_excursao  = parseInt(req.query.excursao);
     const response = await db.query('SELECT * FROM pessoa_excursao INNER JOIN agenda_excursao ON pessoa_excursao.id_excursao = agenda_excursao.id_excursao INNER JOIN pessoa ON pessoa.id_pessoa = pessoa_excursao.id_pessoa WHERE agenda_excursao.id_excursao = $1', [id_excursao]);
-    res.status(200).render('turistas.ejs', {model: response.rows})
+    res.status(200).render('turistas.ejs', { model: response.rows, title: 'RoadOn - Turistas da Excursão' })
 };
 
 exports.findPessoaById = async (req, res) => {
     id_excursao  = parseInt(req.query.excursao);
     id_turista  = parseInt(req.query.turista);
     const response = await db.query('SELECT * FROM pessoa_excursao INNER JOIN agenda_excursao ON pessoa_excursao.id_excursao = agenda_excursao.id_excursao INNER JOIN pessoa ON pessoa.id_pessoa = pessoa_excursao.id_pessoa INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_excursao = $1 AND pessoa.id_pessoa = $2', [id_excursao, id_turista]);
-    res.status(200).render('editar-turista.ejs', {model: response.rows, moment: moment })
+    res.status(200).render('editar-turista.ejs', {model: response.rows, moment: moment, title: 'RoadOn - Alterar Turista' })
 }
 
 exports.updatePessoaById = async (req, res) => {

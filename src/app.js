@@ -64,7 +64,7 @@ function authenticationMiddleware(req, res, next) {
 app.set('views','src/views') 
 app.set('view-engine', 'ejs');
 app.get('/', (req, res) => {
-  res.render('index.ejs')
+  res.render('index.ejs', {title: 'RoadOn'})
 })
 
 

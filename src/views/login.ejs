@@ -6,7 +6,7 @@
 			name="viewport"
 			content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
 		/>
-		<title>Home - Brand</title>
+		<title><%= title %></title>
 		<%- include('head') %>
 	</head>
 
@@ -131,12 +131,7 @@
 						</div>
 						<a href="registrar-empresa">
 							Ainda não possui cadastro? Clique aqui!
-						</a>
-						<% if(message) { %>
-						<p>
-							<label style="color: Red"><%= message %></label>
-						</p>
-						<%}%>
+						</a>						
 						<div class="mb-3"></div>
 						<div class="mb-3"></div>
 						<div class="mb-3"></div>
@@ -167,13 +162,22 @@
 		<script src="/assets/js/Dashboard.js"></script>
 		<script>
 			   '<% if(cadastro) { %>'
-			   Swal.fire({
-				icon: 'success',
-				title: 'Cadastro realizado com sucesso!',
-                text: 'Faça login para desfrutar de nossos serviços',
-				confirmButtonColor: 'rgb(254, 209, 54)',
-			})
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Cadastro realizado com sucesso!',
+                    text: 'Faça login para desfrutar de nossos serviços',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
 			   '<%}%>'
+
+               '<% if(fail) { %>'
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Email e/ou senha inválido(s)!',
+                    confirmButtonColor: 'rgb(254, 209, 54)',
+                })
+				'<%}%>'
 		</script>
 	</body>
 </html>

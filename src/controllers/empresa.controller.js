@@ -35,7 +35,7 @@ exports.listAllEmpresas = async (req, res) => {
 exports.findEmpresaById = async (req, res) => {
   const { id_empresa } = req.user; 
   const response = await db.query('SELECT * FROM empresa WHERE id_empresa = $1', [id_empresa]);  
-  res.status(200).render('alterar-empresa.ejs', { model: response.rows })
+  res.status(200).render('alterar-empresa.ejs', { model: response.rows, title: 'RoadOn - Alterar Empresa' })
 }
 
 // ==> Método responsável por atualizar uma Empresa pelo 'Id':

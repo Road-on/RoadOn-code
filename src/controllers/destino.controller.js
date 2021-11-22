@@ -18,13 +18,13 @@ exports.createDestino = async (req, res) => {
 exports.listAllDestinos = async (req, res) => {
     const { id_empresa } = req.user;
     const response = await db.query('SELECT * FROM destino WHERE id_empresa = $1 ORDER BY nome_destino ASC', [id_empresa]);
-    res.render('destinos.ejs', { model: response.rows })
+    res.render('destinos.ejs', { model: response.rows, title: 'RoadOn - Destinos' })
 };
 
 exports.findDestinoById = async (req, res) => {
     id_destino = parseInt(req.query.destino);
     const response = await db.query('SELECT * FROM destino WHERE id_destino = $1', [id_destino]);
-    res.status(200).render('alterar-destino.ejs', { model: response.rows });
+    res.status(200).render('alterar-destino.ejs', { model: response.rows, title: 'RoadOn - Alterar Destino' });
 }
 
 exports.updateDestinoById = async (req, res) => {

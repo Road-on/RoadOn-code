@@ -18,7 +18,7 @@ router.get('/reagendar', async (req, res) => {
 		'SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_excursao  = $1 AND agenda_excursao.id_empresa = $2',
 		[id_excursao, id_empresa]
 	)
-	res.render('reagendar-destino.ejs', {model: response.rows})
+	res.render('reagendar-destino.ejs', {model: response.rows, title: 'RoadOn - Reagendar Excursão'})
 })
 
 router.post('/reagendar', agendarController.updateAgendamentoById)

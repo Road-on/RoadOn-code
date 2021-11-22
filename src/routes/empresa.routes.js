@@ -11,12 +11,12 @@ const empresaController = require('../controllers/empresa.controller')
 
 router.get('/registrar-empresa', (req, res) => {
 	if (req.query.existe){
-		res.render('registrar-empresa.ejs', { cadastro: false, erro: false})
+		res.render('registrar-empresa.ejs', { cadastro: false, erro: false, title: 'RoadOn - Cadastro de Empresa'})
 	}
 	else if (req.query.erro) {
-		res.render('registrar-empresa.ejs', { cadastro: true, erro: true})
+		res.render('registrar-empresa.ejs', { cadastro: true, erro: true, title: 'RoadOn - Cadastro de Empresa'})
 	} else {
-		res.render('registrar-empresa.ejs', { cadastro: true, erro: false})
+		res.render('registrar-empresa.ejs', { cadastro: true, erro: false, title: 'RoadOn - Cadastro de Empresa'})
 	}
 })
 

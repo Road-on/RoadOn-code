@@ -21,14 +21,14 @@ exports.createAgendamento = async (req, res) => {
 exports.listAllAgendamentos = async (req, res) => {
     const { id_empresa} = req.user;
     const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_empresa = $1 ORDER BY agenda_excursao.data_saida_excursao ASC ', [id_empresa]);   
-    res.status(200).render('agendados.ejs', { model: response.rows, moment: moment });
+    res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, title: 'RoadOn - Agendados' });
 };
 
 exports.findAgendamentoById = async (req, res) => {
     const { id_empresa } = req.user;
     id_excursao  = parseInt(req.query.excursao);
     const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_excursao  = $1 AND agenda_excursao.id_empresa = $2', [id_excursao, id_empresa]);
-    res.status(200).render('consultar-info-agendamento.ejs', { model: response.rows, moment: moment } )
+    res.status(200).render('consultar-info-agendamento.ejs', { model: response.rows, moment: moment, title: 'RoadOn - Informação do Agendamento' } )
 }
 
 exports.updateAgendamentoById = async (req, res) => {
