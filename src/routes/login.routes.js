@@ -6,6 +6,8 @@ const passport = require('passport');
 router.get('/login', (req, res, next) => {
     if (req.query.fail)
         res.render('login.ejs', { message: 'Usuário e/ou senha incorretos!' });
+    else if (req.query.cadastro)
+    res.render('login.ejs', { message: null, cadastro: true});
     else
         res.render('login.ejs', { message: null });
 });

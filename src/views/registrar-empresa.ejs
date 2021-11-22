@@ -126,7 +126,12 @@
 								name="cnpj_empresa"
 								class="form-control"
 								type="text"
-								onblur="if(!validarCNPJ(this.value)){alert('CNPJ Informado é inválido'); this.value='';}"
+								onblur="if(!validarCNPJ(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'CNPJ Inválido!',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								maxlength="18"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o CNPJ da empresa"
@@ -199,15 +204,19 @@
 		<script src="assets/js/Dashboard.js"></script>
 
 		<script>
-			
 			function validaSenha() {
-                senha = document.getElementById('senha_empresa').value
-			    repeteSenha = document.getElementById('senha-repeat').value
+				senha = document.getElementById('senha_empresa').value
+				repeteSenha = document.getElementById('senha-repeat').value
 
 				if (senha == repeteSenha) {
 					return true
 				} else {
-					alert('Senhas não coincidem')
+					Swal.fire({
+						icon: 'error',
+						title: 'Oops...',
+						text: 'As senhas não coincidem!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+					})
 					return false
 				}
 			}
@@ -260,6 +269,27 @@
 
 				return true
 			}
+
+
+			'<% if(!cadastro) { %>'
+			   Swal.fire({
+				icon: 'error',
+				title: 'Não foi possível realizar o cadastro',
+				text: 'O CNPJ e/ou email informado(s) já existe na base de dados!',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+			'<%}%>'
+
+			'<% if(erro) { %>'
+			   Swal.fire({
+				icon: 'error',
+				title: 'Erro no sistema',
+				text: 'Tente novamente! Caso o erro persista, consulte o administrador para mais informações!',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+			'<%}%>'
+
+
 		</script>
 	</body>
 </html>
