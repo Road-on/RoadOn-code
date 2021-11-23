@@ -144,6 +144,7 @@
 							<input
 								class="form-control"
 								name="nome_pessoa"
+								id="nome_pessoa"
 								value="<%= model.nome_pessoa %>"
 								type="text"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
@@ -154,6 +155,7 @@
 							<input
 								class="form-control"
 								name="email_pessoa"
+								id="email_pessoa"
 								value="<%= model.email_pessoa %>"
 								type="email"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
@@ -164,6 +166,13 @@
 							<input
 								class="form-control"
 								name="telefone_pessoa"
+								id="telefone_pessoa"
+								onblur="if(!validPhone(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'Celular Inválido!',
+									confirmButtonColor: 'rgb(254, 209, 54)'								
+								  }); this.value='';}"
 								value="<%= model.telefone_pessoa %>"
 								type="tel"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
@@ -173,7 +182,14 @@
 								<input 
 								name="data_nascimento"
 								class="form-control"
+								id="data_nascimento"
 								disabled
+								onblur="if(!validaDataNascimento(this.value)){Swal.fire({
+									icon: 'warning',
+									title: 'Atenção!',
+									text: 'O passageiro menor de 16 anos precisa de autorização para viajar desacompanhado, ou deve estar com a presença de um responsável, conforme  Lei nº 13.812/2019.',
+									confirmButtonColor: 'rgb(254, 209, 54)',							
+								  }); this.value='';}"
 								type="input"
 								value= "<%= moment(model.data_nascimento ).format('LL')%>"
 								style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" 
@@ -197,6 +213,7 @@
 							<button
 								class="btn btn-primary d-block w-100"
 								type="submit"
+								onclick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -272,4 +289,44 @@
 		<% }) %>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/agency.js"></script>	</body>
+		<script>
+			function validaDataNascimento(data){
+					console.log(data + "debug")
+					var dataMenorDeIdade = "01/01/2005";
+					var partesDataMenorIdade = dataMenorDeIdade.split("/");
+					var dataPreenchidaMenorIdade = new Date(partesDataMenorIdade[2], partesDataMenorIdade[1] - 1, partesDataMenorIdade[0]);
+					var partesData = data.split("-");
+					var dataPreenchida = new Date(partesData[0], partesData[1] - 1, partesData[2]);
+					if(dataPreenchidaMenorIdade.getFullYear() > dataPreenchida.getFullYear()){
+						return true
+					} 
+					return false
+				}
+	
+			function validPhone(phone) {
+						if(phone.length < 11){
+							return false
+						}
+					return true;
+				}
+	
+			function validarCamposEmBranco(){
+					nome = document.getElementById('nome_pessoa').value
+					email = document.getElementById('email_pessoa').value
+					telefone = document.getElementById('telefone_pessoa').value
+					dataNascimento = document.getElementById('data_nascimento').value
+					
+					if(nome === "" || email === "" || telefone === "" || dataNascimento === ""){
+						Swal.fire({
+							icon: 'error',
+							title: 'Não foi possível realizar o cadastro',
+							text: 'Necessário preencher todos os campos em branco!',
+							confirmButtonColor: 'rgb(254, 209, 54)',
+					})
+					return false
+					} else {
+						return true
+					}
+				}
+		</script>
 </html>

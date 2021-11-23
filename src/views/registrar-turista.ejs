@@ -47,10 +47,20 @@
                     <div class="mb-3">
                         <h5 style="color: rgb(254,209,54);text-align: center;margin-bottom: 30px;">Dados do passageiro</h5>
                     </div>
-                    <div class="mb-3"><input name="nome_pessoa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome do passageiro"></div>
-                    <div class="mb-3"><input name="email_pessoa" class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o E-mail do passageiro"></div>
-                    <div class="mb-3"><input name="telefone_pessoa" class="form-control" type="number" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro"></div>
-                    <div class="mb-3"><input name="data_nascimento" class="form-control" type="date" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a data de nascimento do passageiro">
+                    <div class="mb-3"><input name="nome_pessoa" id="nome_pessoa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome do passageiro"></div>
+                    <div class="mb-3"><input name="email_pessoa" id="email_pessoa" class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o E-mail do passageiro"></div>
+                    <div class="mb-3"><input name="telefone_pessoa" id="telefone_pessoa"onblur="if(!validPhone(this.value)){Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Celular Inválido!',
+                        confirmButtonColor: 'rgb(254, 209, 54)'								
+                      }); this.value='';}" class="form-control" type="number" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro"></div>
+                    <div class="mb-3"><input name="data_nascimento" id="data_nascimento" onblur="if(!validaDataNascimento(this.value)){Swal.fire({
+                        icon: 'warning',
+				        title: 'Atenção!',
+				        text: 'O passageiro menor de 16 anos precisa de autorização para viajar desacompanhado, ou deve estar com a presença de um responsável, conforme  Lei nº 13.812/2019.',
+				        confirmButtonColor: 'rgb(254, 209, 54)',							
+                      }); this.value='';}" class="form-control" type="date" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a data de nascimento do passageiro">
                         <div><select name="destinos" class="form-select"  style="border-radius: 15px;height: 40px;">
                                 <optgroup label="Destinos" >
                                     <option value="null" selected="">Selecione um destino</option>
@@ -63,7 +73,7 @@
                     </div>
                     <div class="mb-3"></div>
                     <div class="mb-3"></div>
-                    <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Incluir Passageiro!</button></div>
+                    <div class="mb-3"><button class="btn btn-primary d-block w-100" onclick="return validarCamposEmBranco();" type="submit" style="background: rgb(254,209,54);color: rgb(0,0,0);border-radius: 15px;padding-bottom: 14px;">Incluir Passageiro!</button></div>
                 </form>
             </div>
         </section>
@@ -74,12 +84,44 @@
     <script src="assets/js/agency.js"></script>
 
     <script>
-        Swal.fire({
-				icon: 'warning',
-				title: 'Atenção!',
-				text: 'O passageiro menor de 16 anos precisa de autorização para viajar desacompanhado, ou deve estar com a presença de um responsável, conforme  Lei nº 13.812/2019.',
-				confirmButtonColor: 'rgb(254, 209, 54)',
+        function validaDataNascimento(data){
+                console.log(data + "debug")
+                var dataMenorDeIdade = "01/01/2005";
+                var partesDataMenorIdade = dataMenorDeIdade.split("/");
+                var dataPreenchidaMenorIdade = new Date(partesDataMenorIdade[2], partesDataMenorIdade[1] - 1, partesDataMenorIdade[0]);
+                var partesData = data.split("-");
+                var dataPreenchida = new Date(partesData[0], partesData[1] - 1, partesData[2]);
+                if(dataPreenchidaMenorIdade.getFullYear() > dataPreenchida.getFullYear()){
+                    return true
+                } 
+                return false
+            }
+
+        function validPhone(phone) {
+   				 if(phone.length < 11){
+						return false
+					}
+				return true;
+			}
+
+        function validarCamposEmBranco(){
+				nome = document.getElementById('nome_pessoa').value
+				email = document.getElementById('email_pessoa').value
+				telefone = document.getElementById('telefone_pessoa').value
+				dataNascimento = document.getElementById('data_nascimento').value
+				
+				if(nome === "" || email === "" || telefone === "" || dataNascimento === ""){
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'Necessário preencher todos os campos em branco!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
 				})
+				return false
+				} else {
+					return true
+				}
+			}
     </script>
 </body>
 
