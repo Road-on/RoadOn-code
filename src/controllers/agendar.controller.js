@@ -30,7 +30,7 @@ exports.listAllAgendamentos = async (req, res) => {
     else if (req.query.turistaDelete)
         res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: false, message: 'Turista removido com sucesso!', deleted: true, title: 'RoadOn - Agendados' });
     else if (req.query.deleted)
-        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: null, deleted: true, title: 'RoadOn - Agendados' });
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: 'Agendamento removido com sucesso!', deleted: true, title: 'RoadOn - Agendados' });
     else
         res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: false, message: null, deleted: false, title: 'RoadOn - Agendados' });
 };
