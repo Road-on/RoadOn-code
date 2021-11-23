@@ -8,7 +8,7 @@ exports.createDestino = async (req, res) => {
     try {
         const { rows } = await db.query(
             "INSERT INTO destino (nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao) VALUES ($1, $2, $3, $4, $5)",
-            [nome_destino, id_empresa, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao]
+            [nome_destino, id_empresa, parseInt(valor_excursao), minimo_passageiro_excursao, maximo_passageiro_excursao]
         );    
         res.status(201).redirect('/destinos?success=true')        
     } catch (error) {
@@ -52,7 +52,7 @@ exports.updateDestinoById = async (req, res) => {
     try {
         const { rows } = await db.query(
             "UPDATE destino SET nome_destino = $1, valor_excursao = $2, minimo_passageiro_excursao = $3, maximo_passageiro_excursao = $4 WHERE id_destino = $5",
-            [nome_destino, valor_excursao, minimo_passageiro_excursao, maximo_passageiro_excursao, id_destino]
+            [nome_destino, parseInt(valor_excursao), minimo_passageiro_excursao, maximo_passageiro_excursao, id_destino]
         );
         res.status(200).redirect('/destinos?success=true');        
     } catch (error) {
