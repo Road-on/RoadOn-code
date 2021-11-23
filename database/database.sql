@@ -36,6 +36,7 @@ CREATE TABLE IF NOT EXISTS Agenda_Excursao (
 
 CREATE TABLE IF NOT EXISTS Pessoa (
     id_pessoa SERIAL NOT NULL PRIMARY KEY,
+    data_nascimento DATE NOT NULL,
     nome_pessoa VARCHAR(240) NOT NULL,
     telefone_pessoa VARCHAR(20) NOT NULL,
     email_pessoa VARCHAR(240) NOT NULL

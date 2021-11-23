@@ -22,11 +22,17 @@ exports.listAllAgendamentos = async (req, res) => {
     const { id_empresa} = req.user;
     const response = await db.query('SELECT * FROM agenda_excursao INNER JOIN destino ON destino.id_destino = agenda_excursao.id_destino WHERE agenda_excursao.id_empresa = $1 ORDER BY agenda_excursao.data_saida_excursao ASC ', [id_empresa]);   
     if (req.query.success)
-        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, deleted: false, title: 'RoadOn - Agendados' });
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: 'Agendamento realizado com sucesso!', deleted: false, title: 'RoadOn - Agendados' });
+    else if (req.query.turistaInclude)
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: 'Turista incluso com sucesso!', deleted: false, title: 'RoadOn - Agendados' });
+    else if (req.query.turistaChange)
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: 'Turista editado com sucesso!', deleted: false, title: 'RoadOn - Agendados' });
+    else if (req.query.turistaDelete)
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: false, message: 'Turista removido com sucesso!', deleted: true, title: 'RoadOn - Agendados' });
     else if (req.query.deleted)
-        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, deleted: true, title: 'RoadOn - Agendados' });
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: true, message: null, deleted: true, title: 'RoadOn - Agendados' });
     else
-        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: false, deleted: false, title: 'RoadOn - Agendados' });
+        res.status(200).render('agendados.ejs', { model: response.rows, moment: moment, success: false, message: null, deleted: false, title: 'RoadOn - Agendados' });
 };
 
 exports.findAgendamentoById = async (req, res) => {

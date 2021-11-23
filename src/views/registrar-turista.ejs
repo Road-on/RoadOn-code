@@ -49,7 +49,8 @@
                     </div>
                     <div class="mb-3"><input name="nome_pessoa" class="form-control" type="text" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o nome do passageiro"></div>
                     <div class="mb-3"><input name="email_pessoa" class="form-control" type="email" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o E-mail do passageiro"></div>
-                    <div class="mb-3"><input name="telefone_pessoa" class="form-control" type="tel" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro">
+                    <div class="mb-3"><input name="telefone_pessoa" class="form-control" type="number" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite o telefone do passageiro"></div>
+                    <div class="mb-3"><input name="data_nascimento" class="form-control" type="date" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a data de nascimento do passageiro">
                         <div><select name="destinos" class="form-select"  style="border-radius: 15px;height: 40px;">
                                 <optgroup label="Destinos" >
                                     <option value="null" selected="">Selecione um destino</option>
@@ -73,6 +74,15 @@
     <script src="assets/js/-Filterable-Cards-.js"></script>
     <script src="assets/js/agency.js"></script>
     <script src="assets/js/Dashboard.js"></script>
+
+    <script>
+        Swal.fire({
+				icon: 'warning',
+				title: 'Atenção!',
+				text: 'O passageiro menor de 16 anos precisa de autorização para viajar desacompanhado, ou deve estar com a presença de um responsável, conforme  Lei nº 13.812/2019.',
+				confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+    </script>
 </body>
 
 </html>

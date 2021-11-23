@@ -5,11 +5,11 @@ moment.locale('pt-br')
 // ==> Método responsável por criar uma pessoa no banco de dados:
 
 exports.createPessoa = async (req, res) => {
-    const { nome_pessoa  , telefone_pessoa  , email_pessoa } = req.body;
+    const { nome_pessoa  , telefone_pessoa  , email_pessoa, data_nascimento } = req.body;
     id_excursao = parseInt(req.body.destinos);
     const { rows } = await db.query(
-        "INSERT INTO pessoa  (nome_pessoa, telefone_pessoa, email_pessoa) VALUES ($1, $2, $3)",
-        [nome_pessoa , telefone_pessoa , email_pessoa]
+        "INSERT INTO pessoa  (nome_pessoa, telefone_pessoa, email_pessoa, data_nascimento) VALUES ($1, $2, $3, $4)",
+        [nome_pessoa , telefone_pessoa , email_pessoa, data_nascimento]
     ).then(setTimeout(async () => {
         await db.query(
             "INSERT INTO pessoa_excursao (id_pessoa, id_excursao) SELECT pessoa.id_pessoa, $1 FROM pessoa WHERE pessoa.id_pessoa = (select id_pessoa from pessoa order by id_pessoa desc limit 1)", [id_excursao])
@@ -17,7 +17,7 @@ exports.createPessoa = async (req, res) => {
         }))
         
 
-    res.status(201).redirect('/agendados')
+    res.status(201).redirect('/agendados?turistaInclude=true')
 };
 
 // ==> Método responsável por listar todas as Pessoas':
@@ -42,11 +42,11 @@ exports.updatePessoaById = async (req, res) => {
         "UPDATE pessoa SET nome_pessoa = $1, telefone_pessoa = $2, email_pessoa = $3 WHERE id_pessoa  = $4",
         [nome_pessoa , telefone_pessoa , email_pessoa , id_turista]
     );
-    res.status(200).redirect('/agendados');
+    res.status(200).redirect('/agendados?turistaChange=true');
 }
 
 exports.deletePessoaById = async (req, res) => {
     id_turista  = parseInt(req.query.turista);
     const response = await db.query('DELETE FROM pessoa WHERE id_pessoa = $1', [id_turista]);
-    res.status(200).redirect('/agendados');
+    res.status(200).redirect('/agendados?turistaDelete=true');
 }

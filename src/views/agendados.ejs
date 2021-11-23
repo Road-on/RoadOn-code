@@ -255,7 +255,7 @@
 			'<% if(success) { %>'
                 Swal.fire({
                     icon: 'success',
-                    title: 'Agendamento realizado com sucesso!',
+                    title: '<%= message %>',
                     confirmButtonColor: 'rgb(254, 209, 54)',
                 })
 			'<%}%>'
@@ -263,7 +263,7 @@
 			'<% if(deleted) { %>'
                 Swal.fire({
                     icon: 'success',
-                    title: 'Agendamento removido com sucesso!',
+                    title: '<%= message %>',
                     confirmButtonColor: 'rgb(254, 209, 54)',
                 })
 			'<%}%>'

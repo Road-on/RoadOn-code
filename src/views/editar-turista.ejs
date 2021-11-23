@@ -169,6 +169,15 @@
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
 								placeholder="Digite o telefone do passageiro"
 							/>
+							<div class="mb-3">
+								<input 
+								name="data_nascimento"
+								class="form-control"
+								disabled
+								type="input"
+								value= "<%= moment(model.data_nascimento ).format('LL')%>"
+								style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" 
+								placeholder="Digite a data de nascimento do passageiro" />
 							<div>
 								<select
 									class="form-select"
