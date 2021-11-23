@@ -61,9 +61,9 @@
 				        text: 'O passageiro menor de 16 anos precisa de autorização para viajar desacompanhado, ou deve estar com a presença de um responsável, conforme  Lei nº 13.812/2019.',
 				        confirmButtonColor: 'rgb(254, 209, 54)',							
                       });}" class="form-control" type="date" style="border-radius: 15px;margin: 0px;margin-bottom: 15px;" placeholder="Digite a data de nascimento do passageiro">
-                        <div><select name="destinos" class="form-select"  style="border-radius: 15px;height: 40px;">
+                        <div><select name="destinos" id="destinos" class="form-select"  style="border-radius: 15px;height: 40px;">
                                 <optgroup label="Destinos" >
-                                    <option value="null" selected="">Selecione um destino</option>
+                                    <option value="" selected="">Selecione um destino</option>
                                     <% model.forEach(function(model) { %>                                   
                                     <option name="id_excursao" value="<%= model.id_excursao%>"><%= model.nome_destino%> - <%= moment(model.data_saida_excursao).format('lll') %> ~ <%= moment(model.data_volta_excursao).format('lll') %></option>
                                     <% }) %> 
@@ -85,7 +85,6 @@
 
     <script>
         function validaDataNascimento(data){
-                console.log(data + "debug")
                 var dataMenorDeIdade = "01/01/2005";
                 var partesDataMenorIdade = dataMenorDeIdade.split("/");
                 var dataPreenchidaMenorIdade = new Date(partesDataMenorIdade[2], partesDataMenorIdade[1] - 1, partesDataMenorIdade[0]);
@@ -109,8 +108,9 @@
 				email = document.getElementById('email_pessoa').value
 				telefone = document.getElementById('telefone_pessoa').value
 				dataNascimento = document.getElementById('data_nascimento').value
+                opcao = document.getElementById('destinos').value
 				
-				if(nome === "" || email === "" || telefone === "" || dataNascimento === ""){
+				if(nome === "" || email === "" || telefone === "" || dataNascimento === "" || opcao === ''){
 					Swal.fire({
 						icon: 'error',
 						title: 'Não foi possível realizar o cadastro',
