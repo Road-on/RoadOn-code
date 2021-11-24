@@ -196,6 +196,7 @@
 								</label>
 								<input
                                     name="data_saida_excursao"
+									id="data_saida_excursao"
 									class="form-control"
 									type="datetime-local"
 									style="width: auto; border-radius: 30px"
@@ -216,6 +217,7 @@
 								</label>
 								<input
                                     name="data_volta_excursao"
+									id="data_volta_excursao"
 									class="form-control"
 									type="datetime-local"
 									style="width: auto; border-radius: 30px"
@@ -226,6 +228,7 @@
 							<button
 								class="btn btn-primary d-block w-100"
 								type="submit"
+								onclick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -317,4 +320,37 @@
 		<%- include('footer') %>
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/agency.js"></script>	</body>
+		<script>
+
+			function validarCamposEmBranco(){
+					data_volta_excursao = document.getElementById('data_volta_excursao').value
+					data_saida_excursao = document.getElementById('data_saida_excursao').value
+
+					dataVoltaParse = new Date(data_volta_excursao)
+					dataSaidaParse = new Date(data_saida_excursao)
+
+					console.log("data de volta: " + dataVoltaParse)
+					console.log("data de saida: " + dataSaidaParse)
+					
+					if(data_saida_excursao === "" || data_volta_excursao === ""){
+						Swal.fire({
+							icon: 'error',
+							title: 'Não foi possível realizar o cadastro',
+							text: 'Necessário preencher todos os campos em branco!',
+							confirmButtonColor: 'rgb(254, 209, 54)',
+					})
+					return false
+					} else if(dataVoltaParse < dataSaidaParse) {
+						Swal.fire({
+							icon: 'error',
+							title: 'Não foi possível realizar o cadastro',
+							text: 'A data de saída não pode ser maior do que a data de volta!',
+							confirmButtonColor: 'rgb(254, 209, 54)',
+					})
+					return false
+					}
+						return true
+					
+				}
+		</script>
 </html>
