@@ -282,6 +282,12 @@
 			function validarCamposEmBranco(){
 					data_volta_excursao = document.getElementById('data_volta_excursao').value
 					data_saida_excursao = document.getElementById('data_saida_excursao').value
+
+					dataVoltaParse = new Date(data_volta_excursao)
+					dataSaidaParse = new Date(data_saida_excursao)
+
+					console.log("data de volta: " + dataVoltaParse)
+					console.log("data de saida: " + dataSaidaParse)
 					
 					if(data_saida_excursao === "" || data_volta_excursao === ""){
 						Swal.fire({
@@ -291,7 +297,15 @@
 							confirmButtonColor: 'rgb(254, 209, 54)',
 					})
 					return false
-					} else 
+					} else if(dataVoltaParse < dataSaidaParse) {
+						Swal.fire({
+							icon: 'error',
+							title: 'Não foi possível realizar o cadastro',
+							text: 'A data de saída não pode ser maior do que a data de volta!',
+							confirmButtonColor: 'rgb(254, 209, 54)',
+					})
+					return false
+					}
 						return true
 					
 				}
