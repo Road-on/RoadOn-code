@@ -171,6 +171,12 @@
 								class="form-control"
 								type="number"
 								name="valor_excursao"
+								onblur="if(this.value == 0){Swal.fire({
+									icon: 'warning',
+									title: 'Oops...',
+									text: 'O valor deve ser maior do que o R$00,00!',
+									confirmButtonColor: 'rgb(254, 209, 54)',
+								}); this.value='';}"
 								id="valor_excursao"
 								placeholder="Digite o valor por pessoa"
 								style="border-radius: 15px"
@@ -180,6 +186,7 @@
 							<button
 								class="btn btn-primary d-block w-100"
 								type="submit"
+								onclick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -211,7 +218,7 @@
 										<div
 											class="modal-header"
 											style="background: #2f363a; border-radius: -11px; padding: 25px"
-										>
+										>	
 											<h4 class="modal-title" style="color: rgb(254, 209, 54)">
 												Confirmação
 											</h4>
@@ -277,6 +284,43 @@
 				})
 			'<%}%>'
 
+			function validarCamposEmBranco(){
+				valor_excursao = document.getElementById('valor_excursao').value
+				nome_destino = document.getElementById('nome_destino').value
+				minimo_passageiro_excursao = document.getElementById('minimo_passageiro_excursao').value
+				maximo_passageiro_excursao = document.getElementById('maximo_passageiro_excursao').value
+
+				valorExcursaoParse = parseInt(valor_excursao)
+				minimoPassageirosParse = parseInt(minimo_passageiro_excursao)
+				maximoPassageirosParse = parseInt(maximo_passageiro_excursao)
+				
+				if(valor_excursao === "" || nome_destino === "" || minimo_passageiro_excursao === "" || maximo_passageiro_excursao === ""){
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'Necessário preencher todos os campos em branco!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+				return false
+				} else if (valorExcursaoParse <= 0) {
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'O valor mínimo da excursão não pode ser 0!',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+					return false
+				} else if (minimoPassageirosParse > maximoPassageirosParse){
+					Swal.fire({
+						icon: 'error',
+						title: 'Não foi possível realizar o cadastro',
+						text: 'O número mínimo de passageiros não pode ser maior que o número máximo.',
+						confirmButtonColor: 'rgb(254, 209, 54)',
+				})
+				return false
+				}
+				return true
+			}
 		</script>
 
 	</body>
