@@ -53,8 +53,14 @@
 							<a class="nav-link" href="dashboard">Dashboard</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="registrar-turista" style="margin-right: 28px">incluir turistas</a>
-						</li>					
+							<a
+								class="nav-link"
+								href="registrar-turista"
+								style="margin-right: 28px"
+							>
+								incluir turistas
+							</a>
+						</li>
 					</ul>
 					<button
 						class="btn btn-primary text-uppercase"
@@ -150,6 +156,12 @@
 								id="minimo_passageiro_excursao"
 								name="minimo_passageiro_excursao"
 								style="border-radius: 15px; margin: 0px; margin-bottom: 15px"
+								onblur="if(!menorQueZero(this.value)){Swal.fire({
+									icon: 'error',
+									title: 'Não foi possível realizar o cadastro',
+									text: 'O número de passageiros não pode ser menor que zero!',
+									confirmButtonColor: 'rgb(254, 209, 54)',
+							}); this.value='';}"
 								placeholder="Digite o número mínimo de passageiros"
 							/>
 						</div>
@@ -206,77 +218,89 @@
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script>
-			
 			'<% if(exists) { %>'
-			   Swal.fire({
+			Swal.fire({
 				icon: 'error',
 				title: 'Não foi possível realizar o cadastro',
 				text: 'O destino informado já existe na base de dados!',
 				confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-			'<%}%>'
+			})
+			;('<%}%>')
 
-			'<% if(error) { %>'
-			   Swal.fire({
+			;('<% if(error) { %>')
+			Swal.fire({
 				icon: 'error',
 				title: 'Erro no sistema',
 				text: 'Tente novamente! Caso o erro persista, consulte o administrador para mais informações!',
 				confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-			'<%}%>'
-
+			})
+			;('<%}%>')
 		</script>
 
-	<script>
-
-		function validarCamposEmBranco(){
+		<script>
+			function validarCamposEmBranco() {
 				valor_excursao = document.getElementById('valor_excursao').value
 				nome_destino = document.getElementById('nome_destino').value
-				minimo_passageiro_excursao = document.getElementById('minimo_passageiro_excursao').value
-				maximo_passageiro_excursao = document.getElementById('maximo_passageiro_excursao').value
+				minimo_passageiro_excursao = document.getElementById(
+					'minimo_passageiro_excursao'
+				).value
+				maximo_passageiro_excursao = document.getElementById(
+					'maximo_passageiro_excursao'
+				).value
 
 				valorExcursaoParse = parseInt(valor_excursao)
 				minimoPassageirosParse = parseInt(minimo_passageiro_excursao)
 				maximoPassageirosParse = parseInt(maximo_passageiro_excursao)
-				
-				if(valor_excursao === "" || nome_destino === "" || minimo_passageiro_excursao === "" || maximo_passageiro_excursao === ""){
+
+				if (
+					valor_excursao === '' ||
+					nome_destino === '' ||
+					minimo_passageiro_excursao === '' ||
+					maximo_passageiro_excursao === ''
+				) {
 					Swal.fire({
 						icon: 'error',
 						title: 'Não foi possível realizar o cadastro',
 						text: 'Necessário preencher todos os campos em branco!',
 						confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-				return false
-				} else if (valorExcursaoParse <= 0) {
+					})
+					return false
+				} else if (valorExcursaoParse < 0) {
 					Swal.fire({
 						icon: 'error',
 						title: 'Não foi possível realizar o cadastro',
-						text: 'O valor mínimo da excursão não pode ser 0!',
+						text: 'O valor mínimo da excursão não pode ser menor que zero!',
 						confirmButtonColor: 'rgb(254, 209, 54)',
-				})
+					})
 					return false
-				} else if (minimoPassageirosParse > maximoPassageirosParse){
+				} else if (minimoPassageirosParse >= maximoPassageirosParse) {
 					Swal.fire({
 						icon: 'error',
 						title: 'Não foi possível realizar o cadastro',
 						text: 'O número mínimo de passageiros não pode ser maior que o número máximo.',
 						confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-				return false
+					})
+					return false
 				}
-				return true
 			}
 
-
-			function validaValorMinimoDestino(maximo){
-				minimo_passageiro_excursao = document.getElementById('minimo_passageiro_excursao').value
-				max = parseInt(maximo)
-				if(minimo_passageiro_excursao > max){
+			function menorQueZero(n) {
+				if (n < 0) {
 					return false
 				}
 				return true
 			}
-	</script>		
 
+			function validaValorMinimoDestino(maximo) {
+				minimo_passageiro_excursao = document.getElementById(
+					'minimo_passageiro_excursao'
+				).value
+				max = parseInt(maximo)
+				if (minimo_passageiro_excursao > max) {
+					return false
+				}
+				return true
+			}
+		</script>
 	</body>
 </html>

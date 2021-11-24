@@ -297,11 +297,11 @@
 							confirmButtonColor: 'rgb(254, 209, 54)',
 					})
 					return false
-					} else if(dataVoltaParse < dataSaidaParse) {
+					} else if(dataVoltaParse <= dataSaidaParse ) {
 						Swal.fire({
 							icon: 'error',
 							title: 'Não foi possível realizar o cadastro',
-							text: 'A data de saída não pode ser maior do que a data de volta!',
+							text: 'A data de saída não pode ser maior ou igual do que a data de volta!',
 							confirmButtonColor: 'rgb(254, 209, 54)',
 					})
 					return false

@@ -340,7 +340,7 @@
 							confirmButtonColor: 'rgb(254, 209, 54)',
 					})
 					return false
-					} else if(dataVoltaParse < dataSaidaParse) {
+					} else if(dataVoltaParse <= dataSaidaParse) {
 						Swal.fire({
 							icon: 'error',
 							title: 'Não foi possível realizar o cadastro',
