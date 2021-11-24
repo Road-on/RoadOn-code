@@ -198,6 +198,7 @@
 								<select
 									class="form-select"
 									name="destinos"
+									id="destinos"
 									style="border-radius: 15px; height: 40px; width: auto;"
 									disabled
 								>
@@ -213,7 +214,7 @@
 							<button
 								class="btn btn-primary d-block w-100"
 								type="submit"
-								onclick="return validarCamposEmBranco();"
+								onClick="return validarCamposEmBranco();"
 								style="
 									background: rgb(254, 209, 54);
 									color: rgb(0, 0, 0);
@@ -291,7 +292,6 @@
 		<script src="assets/js/agency.js"></script>	</body>
 		<script>
 			function validaDataNascimento(data){
-					console.log(data + "debug")
 					var dataMenorDeIdade = "01/01/2005";
 					var partesDataMenorIdade = dataMenorDeIdade.split("/");
 					var dataPreenchidaMenorIdade = new Date(partesDataMenorIdade[2], partesDataMenorIdade[1] - 1, partesDataMenorIdade[0]);
@@ -315,8 +315,9 @@
 					email = document.getElementById('email_pessoa').value
 					telefone = document.getElementById('telefone_pessoa').value
 					dataNascimento = document.getElementById('data_nascimento').value
+					opcao = document.getElementById('destinos').value
 					
-					if(nome === "" || email === "" || telefone === "" || dataNascimento === ""){
+					if(nome === "" || email === "" || telefone === "" || dataNascimento === "" || opcao === ''){
 						Swal.fire({
 							icon: 'error',
 							title: 'Não foi possível realizar o cadastro',
