@@ -304,10 +304,14 @@
 				}
 	
 			function validPhone(phone) {
-						if(phone.length < 11){
-							return false
-						}
-					return true;
+				var validador = /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/g;
+				if(validador.test(phone)){
+					return false
+				}
+   				 if(phone.length > 11 || phone.length <10){
+						return false
+					}
+				return true;
 				}
 	
 			function validarCamposEmBranco(){
