@@ -271,25 +271,6 @@
 		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 		<script src="assets/js/agency.js"></script>
 		<script>
-			
-			'<% if(exists) { %>'
-			   Swal.fire({
-				icon: 'error',
-				title: 'Não foi possível realizar o cadastro',
-				text: 'O destino informado já existe na base de dados!',
-				confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-			'<%}%>'
-
-			'<% if(error) { %>'
-			   Swal.fire({
-				icon: 'error',
-				title: 'Erro no sistema',
-				text: 'Tente novamente! Caso o erro persista, consulte o administrador para mais informações!',
-				confirmButtonColor: 'rgb(254, 209, 54)',
-				})
-			'<%}%>'
-
 			function validarCamposEmBranco(){
 				valor_excursao = document.getElementById('valor_excursao').value
 				nome_destino = document.getElementById('nome_destino').value
