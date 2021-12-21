@@ -135,6 +135,17 @@
 							</h5>
 						</div>
 						<div class="mb-3">
+							<label
+									class="form-label"
+									style="
+										color: var(--bs-white);
+										font-weight: bold;
+										font-family: Nunito, sans-serif;
+										font-size: 14px;
+									"
+								>
+								Destino
+							</label>
 							<input
 								value="<%= model.nome_destino %>"
 								class="form-control"
@@ -146,6 +157,17 @@
 							/>
 						</div>
 						<div class="mb-3">
+							<label
+							class="form-label"
+							style="
+								color: var(--bs-white);
+								font-weight: bold;
+								font-family: Nunito, sans-serif;
+								font-size: 14px;
+							"
+							>
+								Mínimo de passageiros na excursão
+							</label>
 							<input
 								value="<%= model.minimo_passageiro_excursao %>"
 								class="form-control"
@@ -163,6 +185,17 @@
 							/>
 						</div>
 						<div class="mb-3">
+							<label
+							class="form-label"
+							style="
+								color: var(--bs-white);
+								font-weight: bold;
+								font-family: Nunito, sans-serif;
+								font-size: 14px;
+							"
+							>
+								Máximo de passageiros na excursão
+							</label>
 							<input
 								value="<%= model.maximo_passageiro_excursao %>"
 								class="form-control"
@@ -178,6 +211,17 @@
 								}); this.value='';}"
 								placeholder="Digite o limite de passageiros"
 							/>
+							<label
+							class="form-label"
+							style="
+								color: var(--bs-white);
+								font-weight: bold;
+								font-family: Nunito, sans-serif;
+								font-size: 14px;
+							"
+							>
+								Valor da excursão (por pessoa)
+							</label>
 							<input
 								value="<%= model.valor_excursao %>"
 								class="form-control"
@@ -216,6 +260,20 @@
 								data-bs-target="#modal-exclusao"
 							>
 								Excluir destino
+							</button>
+
+							<button
+								class="btn btn-primary d-block w-100"
+								type="button"
+								onclick="window.location.href = 'destinos'"
+								style="
+									background: var(--bs-gray-700);
+									color: rgb(0, 0, 0);
+									border-radius: 15px;
+									padding-bottom: 14px;
+								"
+							>
+								Retornar
 							</button>
 
 							<div class="modal fade" role="dialog" tabindex="-1" id="modal-exclusao">
